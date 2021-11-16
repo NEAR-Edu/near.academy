@@ -46,6 +46,7 @@ export const TermsView = () => {
             <li>Twitter Analytics</li>
             <li>Google Analytics</li>
             <li>Mailchimp</li>
+            <li>LogRocket</li>
           </ul>
           <h2>How will we use your data?</h2>
           <p>near.academy collects your data so that we can:</p>
@@ -104,7 +105,7 @@ export const TermsView = () => {
           </p>
           <p>
             If you make a request, we have one month to respond to you. If you would like to exercise any of these
-            rights, please contact us at our email: nearacademy@protonmail.com{' '}
+            rights, please contact us at our email: learn@near.org{' '}
           </p>
           <h2>Cookies</h2>
           <p>
@@ -148,13 +149,13 @@ export const TermsView = () => {
           <h2>Changes to our privacy policy</h2>
           <p>
             near.academy keeps its privacy policy under regular review and places any updates on this web page. This
-            privacy policy was last updated on 13 October 2020.
+            privacy policy was last updated on 16 November 2021.
           </p>
           <h2>How to contact us</h2>
           <p>
             If you have any questions about near.academy privacy policy, the data we hold on you, or you would like to
             exercise one of your data protection rights, please email us at:{' '}
-            <a href="mailto:nearacademy@protonmail.com">nearacademy@protonmail.com</a>
+            <a href="mailto:learn@near.org">learn@near.org</a>
           </p>
           <h2>How to contact the appropriate authority</h2>
           <p>
