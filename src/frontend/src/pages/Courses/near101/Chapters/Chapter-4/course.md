@@ -4,20 +4,6 @@
 
 <Spacer />
 
-<narrativeText style="background: #00C08B;">
-    <div class="image-wrapper">
-        <img alt="story_image_4_0" src="/images/chap_4_0.png">
-    </div>
-    <VerticalAlign>
-        It’s always something to start in a new environment. And you’ve decided to make the best of it.
-        <Spacer />
-        *"You’re all set now. Let’s get to work!"*
-        <Spacer />
-        *"You’ve got your first opportunity to show you know your stuff. Ethan is on vacation, and he deals with the meme inventory. Could you cover for him? Start by getting familiar with the registry… "*
-    </VerticalAlign>
-</narrativeText>
-<Spacer />
-
 You can think of NEAR as an additional truth service that you add to your web application.
 The benefits of adding such a truth service to an App include handling money, ownership and global user identity without banks, lawyers or any other traditional intermediaries.
 
@@ -68,17 +54,6 @@ The goal for gas is to represent a unified measure of resources spent to receive
 The cost of each instruction is denominated in "gas" units. Bandwidth is usually measured in bytes, but in the NEAR platform it is converted into gas units using a simple coefficient of overhead which has been estimated on reference hardware.
 
 <Spacer />
-<narrativeText style="background: #0072CE">
-    <div class="image-wrapper">
-        <img alt="story_image_4_2" src="/images/chap_4_2.png">
-    </div>
-    <VerticalAlign>
-        *"Alrighty, I see you’ve still got a hang of it! Awesome, we can start running some code through the near-cli now"*
-        <Spacer />
-        *"Interacting with the network via a terminal is simple and effective."*
-    </VerticalAlign>
-</narrativeText>
-<Spacer />
 
 ## Interact with the Network from your Command Line
 
@@ -87,10 +62,15 @@ Let us call the Meme Museum Contract and see how many memes there are registered
 
 Since we are interested in calling a simple function and getting a quick answer, there is no need to build any interface. We use the nodejs based NEAR CLI that provides a set of command-line tools to easily create, test, deploy scripts on the NEAR Network.
 
-1\. Install NEAR CLI: <AnimatedCode>npm install -g near-cli</AnimatedCode>
-2\. Typing <AnimatedCode>near</AnimatedCode> prints a list of all available commands. We are interested in near login (to login with our account) and near view to make call our code and get the amount of memes in the museum
-3\. Type <AnimatedCode>near login</AnimatedCode> this will open your browser and ask you to login into your account
-4\. Now the contract name is "museum.testnet" and the method is called get_meme_count. So type: <AnimatedCode>near view museum.testnet get_meme_count</AnimatedCode>. This will return you the amount of memes that are registered in the museum.
+
+1\. Install NEAR CLI: <AnimatedCode>npm install -g near-cli</AnimatedCode> 
+
+2\. Typing <AnimatedCode>near</AnimatedCode> prints a list of all available commands. We are interested in near login (to login with our account) and near view to make call our code and get the amount of memes in the museum 
+
+3\. Type <AnimatedCode>near login</AnimatedCode> this will open your browser and ask you to login into your account 
+
+4\. Now the contract name is "museum.testnet" and the method is called get_meme_count. So type: <AnimatedCode>near view museum.testnet get_meme_count</AnimatedCode>. This will return you the amount of memes that are registered in the museum. 
+
 5\. Congratulations. You just called a contract on NEAR.
 
  <ImageContainer>
@@ -103,10 +83,14 @@ Since we are interested in calling a simple function and getting a quick answer,
 
 Invoking a contract method from your dApp will trigger a sequence of actions locally as well as on the NEAR protocol:
 
-1\. Your dApp uses near-cli to compose and sign the transaction that represents a Function Call transaction.
-2\. The transaction is sent to the NEAR platform through the RPC interface, which validates and verifies the transaction before routing it (based on the contract account) to the correct validator for processing.
-3\. The runtime layer launches a Wasm virtual machine.
-4\. The VM loads the contract code to invoke the function identified in the transaction, reading and writing to state storage as needed and returning the result of the function call.
+1\. Your dApp uses near-cli to compose and sign the transaction that represents a Function Call transaction. 
+
+2\. The transaction is sent to the NEAR platform through the RPC interface, which validates and verifies the transaction before routing it (based on the contract account) to the correct validator for processing. 
+
+3\. The runtime layer launches a Wasm virtual machine. 
+
+4\. The VM loads the contract code to invoke the function identified in the transaction, reading and writing to state storage as needed and returning the result of the function call. 
+
 5\. The blockchain layer routes the result back through the RPC interface to your dApp.
 
 <Spacer />

@@ -11,12 +11,10 @@ const networkId = "testnet";
 const amount = utils.format.parseNearAmount("1.5");
 
 async function main() {
-  // connect to NEAR! :)
   const near = await connect(config);
-  // create a NEAR account object
   const sender = await near.account(sender);
 
   // TODO send those tokens here
-  const result = 
+  const result =
   console.log("Transaction Results: ", result.transaction);
 }

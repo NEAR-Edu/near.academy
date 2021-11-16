@@ -1,14 +1,38 @@
-import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { ChapterData } from 'pages/Chapter/Chapter.controller'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+
+import classnames from 'classnames'
+
+import { Button } from 'app/App.components/Button/Button.controller'
+
+import { ChapterData } from 'pages/Chapter/Chapter.controller'
+
 import { PublicUser } from 'shared/user/PublicUser'
 
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
 // prettier-ignore
-import { AccountNameInput, ExternalLink, UserBadge, UserBadgeButtons, UserBadgeInput, UserCard, UserChapter, UserProgress, UserStyled, UserTitle, UserTitle2 } from './User.style'
+import { 
+  BottomInnerContainer,
+  BoxImgLogo,
+  BoxText,
+  CertificateContainer,
+  ChaptersContainer,
+  ExternalLink,
+  InnerContainer,
+  Item,
+  NotCompleteBox,
+  TopInnerContainer,
+  UserBadge,
+  UserBadgeButtons,
+  UserNameContainer,
+  UserStyled,
+  UserTitle,
+  BtnContainer,
+  ButtonsContainer,
+  CertificateItself
+} from './User.style'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 
 type UserViewProps = {
   loading: boolean
@@ -35,6 +59,7 @@ export const UserView = ({
   getCertificateCallback,
   issueNftCallback,
 }: UserViewProps) => {
+
   let badgeUnlocked = false
   let counter = 0
   user.progress?.forEach((chapter) => {
@@ -45,100 +70,117 @@ export const UserView = ({
   return (
     <UserStyled>
       <UserTitle>
-        <h1>Your certificate</h1>
+        <h1>Hey, {user?.username}! Check your progress: </h1>
       </UserTitle>
-      <UserCard>
-        <UserBadge badgeUnlocked={badgeUnlocked}>
-          {badgeUnlocked ? (
-            <>
-              <h2>CONGRATS! YOU ARE NOW A NEAR EXPERT!</h2>
-              {authUser?.name ? (
-                <UserBadgeButtons>
-                  <Button
-                    type="button"
-                    text="Download certificate"
-                    icon="download"
-                    loading={loading}
-                    onClick={() => downloadCallback()}
-                  />
-                  <Link to={`/certificate/${user.username}`}>
-                    <Button type="button" text="Certified URL" icon="link" loading={loading} onClick={() => { }} />
+      <InnerContainer>
+        <TopInnerContainer>
+          <BoxImgLogo />
+          <BoxText>
+            Free Interactive course for Web2 developers to fast entry into the NEAR protocol
+          </BoxText>
+        </TopInnerContainer>
+        <BottomInnerContainer>
+          <ChaptersContainer>
+            <div className={'title-box'}>
+              <h1 className={'title'}>Chapters</h1>
+            </div>
+            {chapterData.map((chapter: ChapterData, key: number) => {
+              const done = user.progress && user.progress.indexOf(chapter.pathname) >= 0
+              return (
+                <Item key={key}>
+                  <Link to={chapter.pathname} className={classnames(done && 'checked')}>
+                    <span className={'number'}>{key + 1}</span>
+                    <span className={'name-link'}>{chapter.name}</span>
                   </Link>
-                  {!authUser?.accountName ? (
-                    <div>
-                      <Button
-                        type="button"
-                        text="Issue NFT certificate"
-                        icon="download"
-                        loading={loading}
-                        onClick={() => issueNftCallback()}
-                      />
-                      <AccountNameInput>
-                        <Input
-                          icon="user"
-                          name="account name"
-                          placeholder="NEAR testnet account name"
-                          type="text"
-                          onChange={(e) => {
-                            setAccountName(e.target.value)
-                          }}
-                          value={accountName}
-                          onBlur={() => { }}
-                          inputStatus={undefined}
-                          errorMessage={undefined}
-                        />
-                      </AccountNameInput>
-                    </div>) : (<p>NFT certificate was issued to: <a href="https://explorer.testnet.near.org/accounts/test.museum-nft.testnet" target="_blank" rel="noopener noreferrer nofollow" ><ExternalLink>{authUser.accountName}</ExternalLink></a></p>)}
-                </UserBadgeButtons>
-              ) : (
-                <UserBadgeInput>
-                  <Input
-                    icon="user"
-                    name="name"
-                    placeholder="Name on certificate"
-                    type="text"
-                    onChange={(e) => {
-                      setName(e.target.value)
-                    }}
-                    value={name}
-                    onBlur={() => { }}
-                    inputStatus={undefined}
-                    errorMessage={undefined}
-                  />
-                  <Button
-                    type="button"
-                    text="Get certificate"
-                    icon="login"
-                    loading={loading}
-                    onClick={() => getCertificateCallback()}
-                  />
-                </UserBadgeInput>
-              )}
-            </>
-          ) : (
-            <p>To obtain the completion certificate, you need to complete all chapters.</p>
-          )}
-        </UserBadge>
-      </UserCard>
+                </Item>
+              )
+            })}
+          </ChaptersContainer>
+          <CertificateContainer>
+            <UserBadge badgeUnlocked={badgeUnlocked}>
+              {badgeUnlocked ? (
+                <>
+                  {authUser?.name ? (<>
+                    <CertificateItself>
+                      <img alt="certificate" src="/certificate.jpg" />
+                      <div>{user.name}</div>
+                    </CertificateItself>
+                    <UserBadgeButtons>
+                      <ButtonsContainer>
+                        <div className={'download'}>
+                          <Button
+                            type="button"
+                            text="Download"
+                            loading={loading}
+                            onClick={() => downloadCallback()}
+                          />
+                        </div>
+                        <div className={'certificateUrl'}>
+                          <Link to={`/certificate/${user.username}`}>
+                            <Button type="button" text="Get URL" loading={loading} onClick={() => { }} />
+                          </Link>
+                        </div>
 
-      <UserTitle2>
-        <h1>Your progress</h1>
-      </UserTitle2>
-      <UserCard>
-        <UserProgress>
-          {chapterData.map((chapter: ChapterData) => {
-            const done = user.progress && user.progress.indexOf(chapter.pathname) >= 0
-            return (
-              <Link to={chapter.pathname}>
-                <UserChapter key={chapter.pathname} done={done}>
-                  {chapter.name}
-                  {done && <img alt="done" src="/icons/check.svg" />}
-                </UserChapter>
-              </Link>
-            )
-          })}
-        </UserProgress>
-      </UserCard>
+                        {!authUser?.accountName ? (
+                          <div className={'issue'}>
+                            <Button
+                              type="button"
+                              text="Issue NFT"
+                              loading={loading}
+                              onClick={() => issueNftCallback()}
+                              color="gradient"
+                            />
+                          </div>
+                          ) : (
+                          <p className={'pNFT'}>
+                            NFT certificate was issued to:
+                            <a href="https://explorer.testnet.near.org/accounts/test.museum-nft.testnet"
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                            >
+                              <ExternalLink>{authUser.accountName}</ExternalLink>
+                            </a>
+                          </p>
+                        )}
+                      </ButtonsContainer>
+                    </UserBadgeButtons>
+                  </>
+                  ) : (
+                    <UserNameContainer>
+                      <div className={'wrapp'}>
+                        <div className={'title'}>
+                          To whom should your certificate be emitted?
+                        </div>
+                        <div className={'box-input'}>
+                          <InputField
+                            label="Name"
+                            type="text"
+                            value={name}
+                            onChange={(e) => {
+                              setName(e.target.value)
+                            }}
+                            onBlur={() => { }}
+                            name="name"
+                            inputStatus={undefined}
+                            errorMessage={undefined}
+                            isDisabled={false}
+                            isName
+                          />
+                        </div>
+                        <BtnContainer>
+                          <Button text="Get your certificate" color="gradient" type="button" loading={loading} onClick={() => getCertificateCallback()} />
+                        </BtnContainer>
+                      </div>
+                    </UserNameContainer>
+                  )}
+                </>
+              ) : (
+                <NotCompleteBox>To obtain the completion certificate, you need to complete all chapters.</NotCompleteBox>
+              )}
+            </UserBadge>
+          </CertificateContainer>
+        </BottomInnerContainer>
+      </InnerContainer>
     </UserStyled>
   )
 }

@@ -2,39 +2,13 @@ import styled from 'styled-components/macro'
 
 
 // prettier-ignore
-import { HamburgerBottomBackward, HamburgerBottomForward, HamburgerTopBackward, HamburgerTopForward, textColor } from '../../../styles'
+import { HamburgerBottomBackward, HamburgerBottomForward, HamburgerTopBackward, HamburgerTopForward, textColor, backgroundColorLight } from '../../../styles'
 
 export const HamburgerStyledLeft = styled.div`
-  position: fixed;
-  left: 18px;
-  top: 30px;
-  overflow: visible;
-  margin: 0;
-  height: 14px;
+  margin-right: 17px;
+  height: 17px;
   box-sizing: content-box;
   cursor: pointer;
-  z-index: 11;
-  
-  @media (max-width: 992px) {
-    display: none;
-  }
-`
-
-export const HamburgerStyledRight = styled.div`
-  position: fixed;
-  right: 18px;
-  top: 18px;
-  overflow: visible;
-  margin: 0;
-  height: 14px;
-  box-sizing: content-box;
-  cursor: pointer;
-  z-index: 11;
-  display: none;
-
-  @media (max-width: 1130px) {
-    display: flex;
-  }
 `
 
 export const HamburgerBox = styled.div`
@@ -53,8 +27,12 @@ export const HamburgerInner = styled.div`
   background-color: ${textColor};
 `
 
-export const HamburgerInnerTop = styled(HamburgerInner)`
+export const HamburgerInnerTop = styled(HamburgerInner)<{ authPage?: boolean }>`
   top: 0;
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
+  
 
   &.true {
     animation: ${HamburgerTopForward} 1s linear;
@@ -67,13 +45,19 @@ export const HamburgerInnerTop = styled(HamburgerInner)`
   }
 `
 
-export const HamburgerInnerMiddle = styled(HamburgerInner)`
+export const HamburgerInnerMiddle = styled(HamburgerInner)<{ authPage?: boolean }>`
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
   display: block;
   top: calc(50% - 1px);
 `
 
-export const HamburgerInnerBottom = styled(HamburgerInner)`
+export const HamburgerInnerBottom = styled(HamburgerInner)<{ authPage?: boolean }>`
   bottom: 1px;
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
 
   &.true {
     animation: ${HamburgerBottomForward} 1s linear;

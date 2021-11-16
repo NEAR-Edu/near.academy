@@ -1,54 +1,69 @@
 import React from 'react';
+import * as PropTypes from "prop-types";
+
 import {Footer} from './MainFooter.style'
 import {Link} from "react-router-dom";
 import {PublicUser} from "../../../shared/user/PublicUser";
-import * as PropTypes from "prop-types";
-import {HeaderView} from "../Header/Header.view";
-
 
 type FooterViewProps = {
-    user?: PublicUser
+    user?: PublicUser,
+    mobileFooter?: boolean | undefined;
+    hideCallback: () => void;
 }
 
-export const ViewMainFooter  = ({user}: FooterViewProps) => {
+export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewProps) => {
     return (
-        <Footer>
-            <div className="footer-wrapper">
-                <div className={'left'}>
-                    <img src={'logo-white.svg'} alt="101 labs icon" />
-                    { user ? <Link className={'link'} to="/invite">REFERRAL SYSTEM</Link> : null}
-                    <Link className={'link'} to="/terms">TERMS</Link>
-                    <p>Made by <a target='_blank' href="https://101Labs.org">101Labs.org</a></p>
-                </div>
-                <div className={'right'}>
-                    {/* <div className="links">
-              <a href="https://mintbase.io/" rel="noopener noreferrer" target="_blank" className="link">Mintbase</a>
-              <a href="https://paras.id/" rel="noopener noreferrer" target="_blank" className="link">Paras</a>
-              <a href="https://berryclub.io/" rel="noopener noreferrer" target="_blank" className="link">Berry Club</a>
-              <a href="https://near.org/developers/" rel="noopener noreferrer" target="_blank" className="link">Near Devs</a>
-              <a href="https://nearguilds.com/" rel="noopener noreferrer" target="_blank" className="link">Near Guilds</a>
-              <a href="https://near.chat" rel="noopener noreferrer" target="_blank" className="link">Near Chat</a>
-            </div> */}
-                    <div className="socials">
-                        <a href={'https://github.com/near'}>
-                            {' '}
-                            <img src={'github.svg'} alt="github icon" />
-                        </a>
-                        <a href={'https://twitter.com/NEARProtocol'}>
-                            <img src={'twitter.svg'} alt="twitter icon" />
-                        </a>
-                        <a href={'https://t.me/cryptonear'}>
-                            <img src={'telegram.svg'} alt="telegram icon" />
-                        </a>
-                    </div>
-                </div>
+      <Footer>
+        <div className={mobileFooter ? 'mobileFooterWrapp' : 'footer-wrapper'}>
+          <div className={'nav-items-mobile'}>
+              <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
+                <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
+              </ul>
             </div>
-        </Footer>
-    )
+          <div className={'left-box'}>
+            <div className={'copy-box'}>
+                © NEAR Academy – 2021
+            </div>
+            <div className={'author-box'}>
+                Designed by <Link to="/">NEAR Education team</Link>
+            </div>
+          </div> 
+          <div className={'logo-footer'}>
+            <div className={'poweredBy'}>Powered by</div> <div className={'logo'} />
+          </div> 
+          <div className={'social-box'}>
+            <div className={'nav-items'}>
+              <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
+                <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
+              </ul>
+            </div>
+            <div className={'social-items'}>
+              <ul>
+                <li className={'nav-item'}>
+                  <a href={'https://github.com/near'}>
+                    <img src={'/images/main_footer/github.png'} alt="github icon" />
+                  </a>
+                </li>
+                <li className={'nav-item'}>
+                  <a href={'https://twitter.com/NEARProtocol'}>
+                    <img src={'/images/main_footer/twitter.png'} alt="twitter icon" />
+                  </a>
+                </li>
+                <li className={'nav-item'}>
+                  <a href={'https://t.me/cryptonear'}>
+                    <img src={'/images/main_footer/telegram.png'} alt="telegram icon" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </Footer>
+  )
 }
 
 ViewMainFooter.propTypes = {
-    user: PropTypes.object,
+  user: PropTypes.object,
 }
 
 ViewMainFooter.defaultProps = {}

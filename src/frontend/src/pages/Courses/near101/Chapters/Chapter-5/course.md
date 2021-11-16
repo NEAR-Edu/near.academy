@@ -4,24 +4,12 @@
 
 <Spacer />
 
-<narrativeText style="background: #00C08B">
-  <div class="image-wrapper">
-  <img alt="story_image_5_0" src="/images/chap_5_0.png">
-  </div>
-  <VerticalAlign>
-  *"When you checked the meme collection status, you actually interacted with a contract on the NEAR Network. As a matter of fact, the museum is orchestrated mostly automatically via a multitude of codes deployed on NEAR  that interact with each other."*
-  <Spacer />
-  *"I’m so glad to be back at work, digital detox was a bad idea! Imagine living without the internet for a week?! My god, I’m so much better with my smart contracts code. I see the beauty in their rules, like an invisible chaos behind the face of order."*
-  </VerticalAlign>
-</narrativeText>
-<Spacer />
-
 ## Contracts
 
 Contracts are a set of functions that can read or alter the state of the NEAR Network. They are executed on the NEAR Virtual Machine (VM). A minimal “Hello, World!” code written in AssemblyScript looks like this:
 
-<Highlight language="typescript" showLineNumbers>
-    export function hello(): string {
+<Highlight class="language-typescript">
+export function hello(): string {
   return 'Hello, World!'
 }
 </Highlight>
@@ -37,23 +25,25 @@ The contract can be called using the NEAR CLI: <AnimatedCode>near view hello-wor
 The hello-world contract is the most basic type of contract as no state alteration is required by the NEAR Network when the contract is called. It simply displays a static string stored on the blockchain. Calling such contracts does not involve gas cost in NEAR; gas is incurred only when a computation is required.
 Let’s look at hello_you() now. This contract invokes more than just a simple “view” function on something that was stored on the blockchain. It requires a call of context.
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function hello_you(): string {
   return 'Hello, ' + context.sender + '!'
 }
 </Highlight>
+
 Contract hello_you() does not alter the blockchain state. Still, it requires a call of context, an operation that validator nodes have to carry, and therefore gas to be paid.
 
 Other "call" functions may alter the state of the blockchain. Gas must be paid to the network when invoking these functions.
 
 Consider the function register_me(). It takes a name and stores it on the blockchain, altering its state, and requiring an action.
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function register_me(): void {
   logging.log('saveMyName() was called')
   storage.setString('sender', context.sender)
 }
 </Highlight>
+
 Note that this time, the function does not return anything to view. This is what is indicated by “void”. The null output must be specified in the functions run on NEAR.
 
 ## Action

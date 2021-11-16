@@ -1,6 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { InputSpacer } from 'app/App.components/Input/Input.style'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 //prettier-ignore
 import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'
@@ -52,10 +51,8 @@ export const ChangePasswordView = ({ changePasswordCallback, loading }: ChangePa
       </ChangePasswordTitle>
       <ChangePasswordCard>
         <form onSubmit={handleSubmit}>
-          <Input
-            icon="password"
+          <InputField
             name="password"
-            placeholder="Current password"
             type="password"
             onChange={handleChange}
             value={form.password.value}
@@ -63,10 +60,8 @@ export const ChangePasswordView = ({ changePasswordCallback, loading }: ChangePa
             inputStatus={getInputStatus(form.password)}
             errorMessage={getErrorMessage(form.password)}
           />
-          <Input
-            icon="password"
+          <InputField
             name="newPassword"
-            placeholder="New password"
             type="password"
             onChange={handleChange}
             value={form.newPassword.value}
@@ -74,7 +69,6 @@ export const ChangePasswordView = ({ changePasswordCallback, loading }: ChangePa
             inputStatus={getInputStatus(form.newPassword)}
             errorMessage={getErrorMessage(form.newPassword)}
           />
-          <InputSpacer />
           <Button type="submit" text="Submit" icon="login" loading={loading} />
         </form>
       </ChangePasswordCard>

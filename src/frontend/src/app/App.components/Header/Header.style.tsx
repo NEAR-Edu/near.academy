@@ -1,21 +1,49 @@
 import styled from 'styled-components/macro'
 
-import { bgTextColor, near6, primaryColor, textColor } from 'styles'
+import { backgroundColorLight, textColorMenuItem, textColorWhite } from 'styles'
 
 export const HeaderStyled = styled.div`
   position: relative;
   text-align: center;
   height: 70px;
-  z-index: 1;
-  background-color: ${near6};
+  background-color: ${backgroundColorLight};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 46px;
+  color: ${textColorWhite};
+
+  &.inChapter {
+    @media (max-width:600px) {
+      border-bottom: 1px solid #E3E3E3;
+    }
+  }
+  &.authPage {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    
+    @media (max-width: 1200px) {
+      border-bottom: 1px solid rgba(255,255,255, .2);
+    }
+  }
+
+  @media (max-width: 1130px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`
+
+export const LeftContainer = styled.div`
+  display: flex;
 `
 
 export const HeaderLogo = styled.img`
   padding: 0px;
-  z-index: 1;
   margin: auto;
   @media (max-width: 450px) {
     max-width: 200px;
@@ -23,13 +51,20 @@ export const HeaderLogo = styled.img`
 `
 
 export const HeaderLoggedOut = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  display: flex;
-  transform: translate(0, -50%);
-  // grid-template-columns: auto auto auto auto;
-  // grid-gap: 10px;
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
+
+  .inChapter {
+    display: none;
+  }
+
+  .authPage {
+    display: none;
+  }
+
+  
 
   @media (max-width: 1130px) {
     display: none;
@@ -40,59 +75,75 @@ export const HeaderLoggedOut = styled.div`
     align-items: center;
     
     button {
-       width: max-content;
-       height: 35px;
-       padding: 0px 15px; 
-       font-size: 14px;
+      height: 40px;
+      padding: 0px 20px; 
+      font-size: 16px;
+      margin-right: 20px;
     }
   }
 `
 
 export const HeaderLoggedIn = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
-  text-transform: uppercase;
-  transform: translate(0, -50%);
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
 
-  @media (max-width: 1130px) {
+  .inChapter {
     display: none;
+  }
+
+  .accountPage {
+    display: flex;
   }
 `
 
 export const HeaderMenuItem = styled.div`
   position: relative;
-  color: ${textColor};
-  line-height: 50px;
-  font-size: 14px;
-  font-weight: 700;
+  color: ${textColorMenuItem};
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
   display: inline-block;
   padding: 0 20px;
 
-  &.login {
-    background-color: ${primaryColor};
-    color: ${bgTextColor};
-    width: 128px;
-    display: grid;
-    grid-template-columns: auto 50px;
-    text-align: right;
+  &.accountPage {
+    color: ${textColorWhite};
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
 
-    > div {
-      line-height: 50px;
-    }
-
-    > svg {
-      height: 28px;
-      width: 28px;
-      margin: 11px;
-      stroke: ${bgTextColor};
+    @media (max-width: 992px) {
+      display: none;
     }
   }
 
   @media (max-width: 1440px) {
     padding: 0 10px;
+  }
+`
+export const HeaderMenuIcon = styled.div`
+  &.userIconAccount {
+    width: 26px;
+    height: 26px;
+    background-image: url('/images/Account/profile.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+  &.userIconLogout {
+    width: 24px;
+    height: 24px;
+    background-image: url('/images/Account/logout.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media (min-width: 992px) {
+      display: none;
+    }
   }
 `

@@ -18,10 +18,22 @@ export const updateFormFromChange = (
 ): FormInputs => {
   event.persist()
 
+  let value = event.target.value;
+
+  if (event.target.name === 'referral') {
+    const indexQuestionMark = value.indexOf('?');
+    if (indexQuestionMark) {
+      const urlParams = new URLSearchParams(value.slice(indexQuestionMark));
+      const myParam = urlParams.get('referral');
+      if (myParam) {
+        value = myParam
+      }
+    }
+  }
   const updatedForm: FormInputs = {
     ...form,
     [event.target.name]: {
-      value: event.target.value,
+      value,
     },
   }
 

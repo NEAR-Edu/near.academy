@@ -13,42 +13,50 @@ import { data as chapter8 } from './Chapter-8'
 export const chapterData: ChapterData[] = [
   {
     pathname: `/${course.path}/chapter-1`,
-    name: '1 -  Why Should You Care?',
+    pathSplash: `/${course.path}/splash-1`,
+    name: 'Welcome to the Internet of value',
     data: chapter1,
   },
   {
     pathname: `/${course.path}/chapter-2`,
-    name: '2 - Key concepts of Web3',
+    pathSplash: `/${course.path}/splash-2`,
+    name: 'Key concepts of Web3',
     data: chapter2,
   },
   {
     pathname: `/${course.path}/chapter-3`,
-    name: '3 - What is NEAR?',
+    pathSplash: `/${course.path}/splash-3`,
+    name: 'What is NEAR?',
     data: chapter3,
   },
   {
     pathname: `/${course.path}/chapter-4`,
-    name: '4 - NEAR Environment	',
+    pathSplash: `/${course.path}/splash-4`,
+    name: 'NEAR Environment	',
     data: chapter4,
   },
   {
     pathname: `/${course.path}/chapter-5`,
-    name: '5 - On NEAR Contracts',
+    pathSplash: `/${course.path}/splash-5`,
+    name: 'On NEAR Contracts',
     data: chapter5,
   },
   {
     pathname: `/${course.path}/chapter-6`,
-    name: '6 - Deploy the Meme Contract',
+    pathSplash: `/${course.path}/splash-6`,
+    name: 'Deploy the Meme Contract',
     data: chapter6,
   },
   {
     pathname: `/${course.path}/chapter-7`,
-    name: '7 -  Build Your Interface',
+    pathSplash: `/${course.path}/splash-7`,
+    name: 'Build Your Interface',
     data: chapter7,
   },
   {
     pathname: `/${course.path}/chapter-8`,
-    name: '8 - What Next',
+    pathSplash: `/${course.path}/splash-8`,
+    name: 'What\'s Next',
     data: chapter8,
   }
 ]

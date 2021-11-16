@@ -1,46 +1,45 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
+import { useRef } from 'react';
+import { useHistory } from 'react-router-dom'
 
-import { PopupStyle, PopupTitle, PopupText, PopupWrapper, PopupImage} from './Popup.style'
+import { PopupBackdrop, PopupTitle, PopupText, PopupWrapper, BtnContainer, PopupContent, BtnContainerLater} from './Popup.style'
 import {Button} from "../Button/Button.controller";
-import {Link} from 'react-router-dom';
-
 type PopupProps = {
-    title: string
-    text: string,
-    link: string,
-    buttonText: string
-    buttonTextClose: string
-    isImage: boolean
-    img: string
-    closePopup: () => void
+  closePopup: () => void
+  open: boolean
 }
 
-export const PopupView = ({ text, title, link, buttonText, closePopup, isImage, img, buttonTextClose }: PopupProps) => {
-    return (
-      <PopupStyle>
-          <PopupWrapper>
-              { title ?  <PopupTitle>{title}</PopupTitle> : null }
-              { isImage ? <PopupImage> <img src={img} alt="popup"/></PopupImage> : null }
-              <PopupText>{ text }</PopupText>
-              <div className={'button-wrapper'}>
-                  <Button onClick={closePopup} text={buttonTextClose} />
-                  <Link to={link}>
-                      <Button text={buttonText} />
-                  </Link>
-              </div>
-          </PopupWrapper>
-      </PopupStyle>
-    )
+export const PopupView = ({open, closePopup }: PopupProps) => {
+  const history = useHistory();
+  const backdrop = useRef(null);
+
+  if (!open) {
+      return null;
+  };
+
+  const onClick = (e: any) => {
+      if (backdrop.current === e.target) {
+        closePopup();
+      }
+  }
+  return (
+    <PopupBackdrop onClick={onClick} ref={backdrop}>
+      <PopupWrapper>
+        <PopupContent>
+          <PopupTitle>Create an account?</PopupTitle>
+          <PopupText>It allows you to <span>save your progress</span> and <span>earn your certificate</span></PopupText>
+          <BtnContainer>
+              <Button text="Sign Up" color="gradient" onClick={() => history.push('/sign-up')} />
+          </BtnContainer>
+          <BtnContainerLater onClick={closePopup}>Later</BtnContainerLater>
+        </PopupContent>
+      </PopupWrapper>
+  </PopupBackdrop>
+  )
 }
 
 PopupView.propTypes = {
-    text: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    img: PropTypes.string,
-    isImage: PropTypes.bool,
-    buttonText: PropTypes.string,
-    buttonTextClose: PropTypes.string,
-    closePopup: PropTypes.func
+  closePopup: PropTypes.func,
+  open: PropTypes.bool,
 }

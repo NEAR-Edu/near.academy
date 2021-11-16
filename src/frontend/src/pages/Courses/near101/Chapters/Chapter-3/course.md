@@ -4,19 +4,6 @@
 
 <Spacer />
 
-<narrativeText style="background: #00C08B">
-    <div class="image-wrapper">
-        <img alt="story_image_3_0" src="/images/chap_3_0.png">
-    </div>
-    <VerticalAlign>
-        Lucky you! Your application was accepted. You’ve landed in Rio de Janeiro and head towards the beach where the museum is located.
-        This is your first working day in the Meme Museum. You meet the director of the museum who gets you setup.
-        <Spacer />
-        *"Today we're going to bring you up to speed with the latest stack from NEAR, and get you your work account which you will use for everything from now on."*
-    </VerticalAlign>
-</narrativeText>
-<Spacer />
-
 **NEAR is an open-source platform that accelerates the development of decentralized applications.**
 
 What is the reason why NEAR was created?
@@ -73,18 +60,6 @@ The NEAR ecosystem is attracting developers and founders from all over the world
 With NEAR, developers should not have to choose between different blockchains like NEAR and Ethereum networks and commit to only one. Developers have the same asset on both blockchains and even have apps that seamlessly communicate across the boundary. This has been enabled by a bridge, called <a target="_blank" rel="noreferrer" href="https://github.com/near/rainbow-bridge" >Rainbow Bridge</a>, that requires the lowest possible trust level one can have for an interoperability solution.
 
 <Spacer />
-
-<narrativeText style="background: #0072CE">
-    <div class="image-wrapper">
-        <img alt="story_image_3_3" src="/images/chap_3_3.png">
-    </div>
-    <VerticalAlign>
-        *“Hey there, I’m Ethan, welcome to the team!”*
-        *“Nice to meet you! I checked your personal account, you’re a rockstar !”*
-        <Spacer />
-        *“Let me show you how to set up a Testnet Account”*
-    </VerticalAlign>
-</narrativeText>
 
 ## NEAR Account Overview and Set Up
 

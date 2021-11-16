@@ -1,6 +1,7 @@
 export const questions = [
     {
         question: "Select all available jobs from decentrajob.testnet",
+        selectedText: "",
         answers: [
             "Account Manager (senior)",
             "Full Stack Web3 Developer (junior)",

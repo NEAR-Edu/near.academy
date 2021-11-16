@@ -15,8 +15,6 @@ export const Invite = () => {
   //     dispatch(getReferral())
   // }, [dispatch])
 
-  const pending = useSelector((state: State) => state)
-
   const onCopy = (text: string, result: boolean) => {
     console.log(text, result)
     dispatch(showToaster('success', '', 'link copied'))

@@ -1,14 +1,11 @@
 import { MainFooter } from 'app/App.components/MainFooter/MainFooter.controller'
 import * as React from 'react'
 import { useState } from 'react'
-import { useEffect } from 'react'
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { Button } from '../../app/App.components/Button/Button.controller'
-import { HeaderLoggedOut } from '../../app/App.components/Header/Header.style'
 //prettier-ignore
 import { InviteContainer, InvitePage, InviteStyled } from './Invite.style'
 
@@ -56,7 +53,7 @@ export const InviteView = ({ user, onCopy }: any) => {
               <div className="input">
                 <input value={value} onChange={(e) => setValue(e.target.value)} type="text" />
                 <CopyToClipboard text={value} onCopy={onCopy}>
-                  <a className="copy-button">copy</a>
+                  <a href="/#" className="copy-button">copy</a>
                 </CopyToClipboard>
               </div>
               <p>

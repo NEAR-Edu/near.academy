@@ -5,6 +5,8 @@ export const ADD_PROGRESS_REQUEST = 'ADD_PROGRESS_REQUEST'
 export const ADD_PROGRESS_COMMIT = 'ADD_PROGRESS_COMMIT'
 export const ADD_PROGRESS_ROLLBACK = 'ADD_PROGRESS_ROLLBACK'
 
+export const ADD_LOCAL_PROGRESS = 'ADD_LOCAL_PROGRESS'
+
 export const addProgress = ({ chapterDone }: AddProgressInputs) => (dispatch: any) => {
   dispatch({
     type: ADD_PROGRESS_REQUEST,
@@ -20,6 +22,14 @@ export const addProgress = ({ chapterDone }: AddProgressInputs) => (dispatch: an
         commit: { type: ADD_PROGRESS_COMMIT, meta: {} },
         rollback: { type: ADD_PROGRESS_ROLLBACK, meta: {} },
       },
+    },
+  })
+}
+export const addLocalProgress = ({ chapterDone }: AddProgressInputs) => (dispatch: any) => {
+  dispatch({
+    type: ADD_LOCAL_PROGRESS,
+    payload: {
+      chapterDone
     },
   })
 }

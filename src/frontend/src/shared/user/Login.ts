@@ -11,7 +11,7 @@ export class LoginInputs {
 
   @Expose()
   @Length(8, 50)
-  @Matches(/^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/, { message: 'Password must have at least one letter and one digit' })
+  @Matches(/^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/, { message: 'Password must be longer than or equal to 8 characters' })
   password!: string
 
   @Expose()

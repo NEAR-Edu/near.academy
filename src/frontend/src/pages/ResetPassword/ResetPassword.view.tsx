@@ -1,6 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { InputSpacer } from 'app/App.components/Input/Input.style'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 //prettier-ignore
 import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'
@@ -50,10 +49,8 @@ export const ResetPasswordView = ({ resetPasswordCallback, loading }: ResetPassw
       </ResetPasswordTitle>
       <ResetPasswordCard>
         <form onSubmit={handleSubmit}>
-          <Input
-            icon="check-shield"
+          <InputField
             name="solution"
-            placeholder="Captcha from email"
             type="text"
             onChange={handleChange}
             value={form.solution.value}
@@ -61,10 +58,8 @@ export const ResetPasswordView = ({ resetPasswordCallback, loading }: ResetPassw
             inputStatus={getInputStatus(form.solution)}
             errorMessage={getErrorMessage(form.solution)}
           />
-          <Input
-            icon="password"
+          <InputField
             name="newPassword"
-            placeholder="New password"
             type="password"
             onChange={handleChange}
             value={form.newPassword.value}
@@ -72,7 +67,7 @@ export const ResetPasswordView = ({ resetPasswordCallback, loading }: ResetPassw
             inputStatus={getInputStatus(form.newPassword)}
             errorMessage={getErrorMessage(form.newPassword)}
           />
-          <InputSpacer />
+
           <Button type="submit" text="Submit" icon="login" loading={loading} />
         </form>
       </ResetPasswordCard>

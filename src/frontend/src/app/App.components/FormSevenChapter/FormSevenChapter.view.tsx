@@ -9,7 +9,7 @@ import {
     updateFormFromChange, updateFormFromSubmit
 } from "../../../helpers/form";
 import {SevenChapterForm} from "../../../shared/meme/SevenChapterForm";
-import {Input} from "../Input/Input.controller";
+import {InputField} from "../Form/InputField/Input.controller";
 import {Button} from "../Button/Button.controller";
 export const FormSevenChapterView = () => {
 
@@ -42,9 +42,8 @@ export const FormSevenChapterView = () => {
     return (
         <FormSevenChapterWrapper>
             <form onSubmit={handleSubmit}>
-                <Input
+                <InputField
                     name="meme"
-                    placeholder="Enter Meme"
                     type="text"
                     onChange={handleChange}
                     value={form.meme.value}
@@ -52,9 +51,8 @@ export const FormSevenChapterView = () => {
                     inputStatus={getInputStatus(form.meme)}
                     errorMessage={getErrorMessage(form.meme)}
                 />
-                <Input
+                <InputField
                     name="title"
-                    placeholder="Enter Title"
                     type="text"
                     onChange={handleChange}
                     value={form.title.value}
@@ -62,9 +60,8 @@ export const FormSevenChapterView = () => {
                     inputStatus={getInputStatus(form.title)}
                     errorMessage={getErrorMessage(form.title)}
                 />
-                <Input
+                <InputField
                     name="url"
-                    placeholder="Enter Data"
                     type="text"
                     onChange={handleChange}
                     value={form.url.value}
@@ -72,9 +69,8 @@ export const FormSevenChapterView = () => {
                     inputStatus={getInputStatus(form.url)}
                     errorMessage={getErrorMessage(form.url)}
                 />
-                <Input
+                <InputField
                     name="category"
-                    placeholder="Enter Category"
                     type="number"
                     onChange={handleChange}
                     value={form.category.value}

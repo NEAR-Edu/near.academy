@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
+import { subTextColor, textColor } from 'styles'
 
-export const PopupStyle = styled.div`
+export const PopupBackdrop = styled.div`
   position: fixed;
   z-index: 99;
   width: 100%;
@@ -9,74 +10,95 @@ export const PopupStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-
-  .button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    width: 100%;
-
-    @media (max-width: 992px) {
-      flex-direction: column;
-
-      button {
-        margin-bottom: 20px;
-      }
-    }
-
-    button {
-      height: 40px;
-    }
-  }
+  background: rgba(8,29,66, 0.5);
+  padding: 0 20px;
 `
 
 export const PopupWrapper = styled.div`
-  border-radius: 22px;
-  box-shadow: 0px 0px 49px -17px rgb(0 0 0 / 62%);
-  background: #fff;
-  max-height: 600px;
-  min-height: 200px;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 16px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
   position: relative;
-  width: 600px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
+  max-width: 768px;
+  width: 100%;
+`
+export const PopupContent = styled.div`
+  max-width: 652px;
+  width: 100%;
+  margin: 117px auto 0;
+  padding: 0 20px;
 
-  @media (max-width: 992px) {
-    width: 90%;
-    max-height: 90%;
+  @media (max-width: 576px) {
+    margin: 50px auto 0;
+    max-width: 530px;
   }
 `
 
 export const PopupTitle = styled.h2`
-  padding: 20px;
-  font-size: 36px;
+  padding: 0;
+  margin: 0;
   font-weight: bold;
-  letter-spacing: 2px;
-  color: #00c08b;
+  font-size: 48px;
+  line-height: 58px;
+  color: ${subTextColor};
   text-align: center;
+  @media (max-width: 576px) {
+    font-size: 33px;
+    line-height: 40px;
+  }
 `
 
 export const PopupText = styled.p`
-  padding: 20px;
-  font-size: 24px;
+  padding: 0;
+  margin: 13px auto 0;
+  font-size: 21px;
+  line-height: 32px;
   text-align: center;
-  margin: 0;
+  color: ${textColor};
+
+  span {
+    font-weight: bold;
+  }
+
+  @media (max-width: 576px) {
+    margin: 24px auto 0;
+    font-size: 17px;
+    line-height: 24px;
+
+    span {
+      font-weight: normal;
+    }
+  }
 `
-
-export const PopupImage = styled.div`
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px auto;
-
-  img {
+export const BtnContainer = styled.div`
+  margin: 43px auto 0;
+  max-width: 180px;
+  width: 100%;
+  button {
+    height: 60px;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+  }
+
+  @media (max-width: 576px) {
+    margin: 27px auto 0;
+    max-width: 145px;
+    button {
+      height: 50px;
+      width: 100%;
+    }
+  }
+`
+export const BtnContainerLater = styled.div`
+  margin-top: 70px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #94A3B8;
+  cursor: pointer;
+  margin-bottom: 32px;
+
+  @media (max-width: 576px) {
+    margin-top: 29px;
+    margin-bottom: 41px;
   }
 `
