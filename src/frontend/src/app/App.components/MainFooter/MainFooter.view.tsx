@@ -40,7 +40,7 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
             <div className={'social-items'}>
               <ul>
                 <li className={'nav-item'}>
-                  <a href={'https://github.com/near'}>
+                  <a href={'https://github.com/NEAR-Edu/near.academy'}>
                     <img src={'/images/main_footer/github.png'} alt="github icon" />
                   </a>
                 </li>

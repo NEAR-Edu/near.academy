@@ -12,11 +12,16 @@ import { hotjar } from 'react-hotjar';
 // @ts-ignore
 import TagManager from 'react-gtm-module'
 import TwitterConvTrkr from "react-twitter-conversion-tracker";
-
+import LogRocket from 'logrocket';
 
 import './styles/fonts.css'
 
 export const store = configureStore({})
+
+const LOG_ROCKET_PROJECT_ID = 'near/nearacademy'
+
+
+LogRocket.init(LOG_ROCKET_PROJECT_ID);
 
 ReactGA.initialize('UA-192160338-1')
 hotjar.initialize(2383690, 6);

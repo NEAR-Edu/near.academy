@@ -72,37 +72,42 @@ export const ChapterDrawerView = ({
           defaultOption={activeCourse}
           selectCallback={(e) => changeCourseCallback(e)}
         /> */}
-  
-        {chaptersByCourse[activeCourse.path].map((chapter: ChapterData, key: number) => {
-          let done = false;
+        <div className={classnames(user && 'isAuth')}>
+          {chaptersByCourse[activeCourse.path].map((chapter: ChapterData, key: number) => {
+            let done = false;
 
-          if (user) {
-            done = user.progress ? user.progress.indexOf(chapter.pathname) >= 0 : false;
-          } else if (progressUserChapter.length) {
-            done = progressUserChapter.indexOf(chapter.pathname) >= 0
-          }
-          return (
-            <DrawerItem key={chapter.pathname} className={pathname === chapter.pathname ? 'current-path' : 'other-path'}>
-              <Link className={classnames(done && 'checked')} to={chapter.pathSplash} onClick={() => hideCallback()}>
-                <span className={'number'}>{key + 1}</span>
-                <span className={'name-link'}>{chapter.name}</span>
-              </Link>
-            </DrawerItem>
-          )
-        })}
-  
-        <div className={'btn-items'}>
-          <div className={'btn-item'}>
-            <Link to="/sign-up">
-              <Button text="Sign up for free" color="gradient" onClick={() => hideCallback()} />
-            </Link>
-          </div> 
-          <div className={'btn-item'}>
-            <Link to="/login">
-              <Button text="Log in" color="primary" onClick={() => hideCallback()} />
-            </Link>
-          </div> 
+            if (user) {
+              done = user.progress ? user.progress.indexOf(chapter.pathname) >= 0 : false;
+            } else if (progressUserChapter.length) {
+              done = progressUserChapter.indexOf(chapter.pathname) >= 0
+            }
+            return (
+              <DrawerItem key={chapter.pathname} className={pathname === chapter.pathname ? 'current-path' : 'other-path'}>
+                <Link className={classnames(done && 'checked')} to={chapter.pathSplash} onClick={() => hideCallback()}>
+                  <span className={'number'}>{key + 1}</span>
+                  <span className={'name-link'}>{chapter.name}</span>
+                </Link>
+              </DrawerItem>
+            )
+          })}
         </div>
+        
+
+        {!user ? (
+          <div className={'btn-items'}>
+            <div className={'btn-item'}>
+              <Link to="/sign-up">
+                <Button text="Sign up for free" color="gradient" onClick={() => hideCallback()} />
+              </Link>
+            </div> 
+            <div className={'btn-item'}>
+              <Link to="/login">
+                <Button text="Log in" color="primary" onClick={() => hideCallback()} />
+              </Link>
+            </div> 
+          </div>
+        ) : null}
+  
         <MainFooter mobileFooter hideCallback={hideCallback} />
       </DrawerStyled>
     </>

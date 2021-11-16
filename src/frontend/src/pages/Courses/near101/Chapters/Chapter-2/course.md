@@ -2,96 +2,87 @@
 <div>Chapter 2</div><div className="imgCheckedBox" />
 </ChapterContainer>
 
-
 # Key Concepts of Web3
-
-## New way to exhange value
-
-The rise of the first blockchain application started in 2009 with Bitcoin, an independent network powering a global digital currency. Since then, blockchain technology has been used across many new applications forming a new open internet called Web3. In 2021, over 7,000 companies are building the internet infrastructure of Web3.
 <Spacer />
-The boom of blockchain and Web3 projects has fueled tremendous demand for web developers, software engineers, testers, UX and web designers, project and community managers. Opportunities are everywhere.
-
-<Spacer />
-<QuoteContainer>
-    <img alt="story_image_1_0" src="/images/chapter/light.png">
-    <div class="quote">Unlike Bitcoin, the “value” managed by blockchain networks is not necessarily “money”;
-    in fact most Web3 projects provide a more human-centric definition of “value” called “utility.”</div>
-</QuoteContainer>
-
-<Spacer />
-Blockchain isn’t just about financial transactions. Social and community tokens power new types of blockchain applications centered around human networks and the growth of these networks. They can be designed to create shared value for communities with their own rules around adoption, viral marketing, and ownership.
-
-<Spacer />
-Creators and influencers can launch their own **social tokens**. These tokens may or may not carry monetary value; they are simply used within the creator’s community. Fans can get, transfer, donate, transact or hold these tokens. In this emerging space, we see tokens being used to drive various forms of engagement with fans, from personal reputation to active governance of the community.
-
-## New way to store changes
-
-These social tokens are just one of the multiple new primitives from Web3, shifting the internet away from an attention economy to engagement and shared value one.
+We'll start by looking at the main components of Web3, it's a helpful reference to have when you write code.
 <Spacer />
 
-Before Web3, the internet was a native mechanism to transfer what computer science refers to as **state – the status of who is who, who owns what, and who has the right to do what**.
+- Distributed ledger. The distributed ledger, or blockchain, is the backbone of the network. This is where states are publicly stored.
+- Validator nodes. Validator nodes are servers that provide computation services and security to the network. In permissionless networks, **anyone is free to run a Validator node**, following a set of requirements that are specific to this network.
 
-<Spacer />
-State is a key property for enabling human ecosystems. The ability to quickly and efficiently transfer value independently has been at the heart of exchanges between humans for centuries. When Alice gives 1 shell to Bob, their states change.
+## Execution capabilities
 
-<Spacer />
-Without a native mechanism to save states on the internet, exchanges could be recorded only through institutions acting as clearing entities that require our unconditional trust.
+Custom code is directly deployed to the blockchain and can be called by users. Validator nodes take care of the execution, and any interactions with the code are then saved on the blockchain.
+
+Permissionless protocols allow anyone to use the network as they want: run a validator node, create an account and interact with the network. Users of these networks cannot be barred on account of geography, income, gender, orientation, or a host of other sociological and demographic factors. Value and digital assets can be transferred cross-border, quickly and efficiently, anywhere in the world. **The power of permissionless access cannot be overstated.**
+
+Permissionless blockchains like NEAR use rules that are programmatically open and fair rather than subjectively imposed by a single entity. Everything is fully verifiable through the blockchain.
+
+No central entity or government has the ability to shut down sites and services because these are operated through a network of independent participants via consensus.
+
+## New Mental Models
+
+A typical web application is programmed using a client–server structure. The user ("client") is provided services through an off-site server hosted by a third-party.
+
+Applications are usually broken into logical chunks called "tiers", where every tier is assigned a role. Though many variations are possible, the most common structure is the three-tiered representation: presentation (front-end), application (back-end) and storage (database).
+
+**Decentralized applications** (or **dApps**) follow the same structure overall. The only difference is that the back-end gets enhanced by connecting it to public Web3 infrastructure. The front-end and the storage can be integrated in dApps just like in any other Apps.
 
 <Spacer />
 
-**Blockchain technology has introduced a decentralized method to store changes to the state of the network in an irrefutable way**, without the need for intermediaries. Each participant in these networks is able to keep track, hold and transfer value independently. The network stores the history of all preceding events or user interactions, its successive states.
+In a dApp, security and access are provided by cryptography (public/private keys) rather than username and password or oAuth. This approach is also called **passwordless identification**. **Users keep their identity through dApps** rather than having a different one in each or rely on third-party identity management.
 
-## New way to control your data
+For users, access to the open web is based only on a private key, which is used to unlock all dApps and services on the blockchain.
 
-While cloud services enable businesses to focus more on their business logic and care less about infrastructure, it did not solve another fundamental problem of web2: siloed data controlled by platforms. It is not in platforms’ interest to give unrestricted access to their network to anyone; rather they focus on increasing adoption and loyalty, even if that means creating a dependency for users. User identity, created value, and history are only available in the platforms’ walled-gardens.
-<Spacer />
-
-<QuoteContainer>
-    <img alt="story_image_1_0" src="/images/chapter/light.png">
-    <div class="quote">In Web3, middlemen are removed from the equation. Users are no longer tied to a specific platform, but can change platforms while maintaining their identity and history. Web developers can compose new applications by using existing code or creating their own. There is no gatekeeper to prevent someone from creating a new application on top of another.</div>
-</QuoteContainer>
-
-<Spacer />
-In contrast, Web3 networking protocols treat Identity and Monetary Assets as native primitives that can be transferred over the network.
-
-<Spacer />
-There are many advantages that a typical centralized architecture cannot provide:
+Users access and interact with dApps with a web browser just like any other App; this makes it easy for them to switch. And dApps offer many improvements to the user experience:
 
 <Spacer />
 
-**Trust** <br/>
-Value transfers are operated in a peer-to-peer fashion, without trusted third-parties. That way, users are not dependent on a central entity or platform.
-<Spacer />
-
-**Censorship resistance** <br/>
-Because a central entity does not operate the network, it cannot be shut down by one particular entity. Reaching a Consensus is required to change the state of the network.
+- Identification is done only once for access across dApps
+- Ownership of personal data remains in users’ hands at all times
+- Interactions are opt-in by default
+- Payment and exchanges are handled just like any other action
 
 <Spacer />
 
-**Availability** <br/>
-A decentralized system is more robust as there is no central point of failure.
+Behind the scenes, the framework connecting users with digital services is slightly different with a dApp. Consider all the possible aspects of an application that may be decentralized:
 
 <Spacer />
 
-**Transparency** <br/>
-All interactions and states are stored immutably on the blockchain and publicly available for anyone to review.
+- Backend software (application logic)
+- Frontend software
+- Data storage
+
+## Backend (application logic)
+
+The backend of a dApp is just the same as any other app, except that it’s **connected to the blockchain for at least some of its services**, like access control, storage of transactions and balances, or programmatic guarantee of agreements between users.
+
+## Frontend (Web User Interface)
+
+**The client-side interface of a dApp can use standard web technologies** (HTML, CSS, JavaScript, etc.). This allows a traditional web developer to use familiar tools, libraries, and frameworks.
+
+Interactions with the blockchain, such as signing messages, sending transactions, and managing keys, are often conducted through the web browser via an extension such as the NEAR Wallet. It is also possible to create native mobile dApps.
+
+## Data Storage
+
+**Data storage can be handled the same in dApps as in other Apps**, with the extra ability to store information into the blockchain. That is handy when one wants to verifiably and permanently save actions or transactions.
+
+Storing and distributing significant static assets on a blockchain would be inefficient as the cost would be too high. This is why images, videos, and resources of the application’s frontend web interface (HTML, CSS, JavaScript, etc.) are generally not stored on the blockchain itself.
+
+Besides cloud databases and other centralized solutions, data can be stored on P2P platforms such as the InterPlanetary File System (IPFS); P2P storage is an excellent alternative while maintaining a trustless environment for the dApp.
+
+## Check it for yourself with a Block Explorer!
+
+The NEAR blockchain is public, so anyone can query it to get any data stored in it. Everyone can query the blockchain through a NEAR client, but a dedicated interface is easier to use, and is accessible by anyone regardless of whether they are running the NEAR software or not. Blockchain explorers, as these interfaces are called, can display blockchain data in a more user-friendly way and enhance the entries with off-chain data like current dollar value of a token.
 
 <Spacer />
+
+## Exercise
 
 <BackgroundContainer>
 
 <div class="exerciseTitle">Exercise</div>
-
-Here is your easy win to get started: integrate the payment gateway in line 20 of the app code in the exercise code box.
-
-<Spacer />
-
-adding a payment gateway with NEAR is seamless:
-
-<Highlight class="language-javascript" style="background-color: rgb(0, 0, 0);">
-    await sender.sendMoney(receiver, amount);
-</Highlight>
-
+To find the job offer on Decentrajob. Visit the <a target="_blank" rel="noopener noreferrer" href="https://explorer.testnet.near.org/">testnet explorer</a> and search for the “decentrajob.testnet” account. Here you see an overview of all transactions that happened on that account. Look for the latest transaction set\_open\_job called by museum\_director.testnet and click on the link that looks something like "G8xp5V6...". This will display the details about the transaction, including all arguments that were used to call the function. Select the correct answer.
 </BackgroundContainer>
 
 <Spacer />

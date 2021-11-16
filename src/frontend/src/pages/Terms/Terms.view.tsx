@@ -1,3 +1,5 @@
+import { Header } from 'app/App.components/Header/Header.controller'
+import { MainFooter } from 'app/App.components/MainFooter/MainFooter.controller'
 import * as React from 'react'
 
 //prettier-ignore
@@ -6,6 +8,7 @@ import { TermsContainer, TermsPage, TermsStyled } from './Terms.style'
 export const TermsView = () => {
   return (
     <TermsStyled>
+      <Header />
       <TermsPage>
         <TermsContainer>
           <h1>NEAR Academy Privacy Policy</h1>
@@ -160,6 +163,7 @@ export const TermsView = () => {
           </p>
         </TermsContainer>
       </TermsPage>
+      <MainFooter />
     </TermsStyled>
   )
 }

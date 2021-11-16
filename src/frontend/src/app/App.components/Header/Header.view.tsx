@@ -85,7 +85,7 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: 
                     accountPage && 'accountPage',
                 )}>
                 <Link to={`/user/${user?.username}`}>
-                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>User {user?.username}</HeaderMenuItem>
+                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>{user?.username}</HeaderMenuItem>
                     <HeaderMenuIcon className={classnames(user && 'userIconAccount')} />
                 </Link>
                 <Link

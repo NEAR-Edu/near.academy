@@ -66,6 +66,10 @@ export const DrawerStyled = styled.div`
     }
   }
 
+  .isAuth {
+    margin-bottom: 42px;
+  }
+
   .logo-sideMenu {
     margin-top: 44px;
     display: flex;
