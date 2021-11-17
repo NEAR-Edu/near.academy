@@ -21,7 +21,7 @@ export const TermsPage = styled(FullPage)``
 export const TermsContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding: 0 20px 20px;
   > h1 {
     margin-bottom: 10px;
   }
@@ -34,6 +34,11 @@ export const TermsContainer = styled.div`
 
   > ul {
     font-size: 20px;
+    padding-left: 22px;
+  }
+
+  a {
+    color: darkblue;
   }
 
   @media (max-width: 700px) {

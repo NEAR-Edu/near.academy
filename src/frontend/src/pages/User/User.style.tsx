@@ -86,7 +86,7 @@ export const BoxText = styled.div`
 `
 export const BottomInnerContainer = styled.div`
   padding-top: 31px;
-  padding-bottom: 50px;
+  padding-bottom: 86px;
   color: ${textColorWhite};
   display: flex;
   justify-content: space-between;

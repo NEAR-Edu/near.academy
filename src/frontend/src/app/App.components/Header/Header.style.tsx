@@ -122,28 +122,3 @@ export const HeaderMenuItem = styled.div`
     padding: 0 10px;
   }
 `
-export const HeaderMenuIcon = styled.div`
-  &.userIconAccount {
-    width: 26px;
-    height: 26px;
-    background-image: url('/images/Account/profile.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    margin-right: 20px;
-
-    @media (min-width: 992px) {
-      display: none;
-    }
-  }
-  &.userIconLogout {
-    width: 24px;
-    height: 24px;
-    background-image: url('/images/Account/logout.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    @media (min-width: 992px) {
-      display: none;
-    }
-  }
-`

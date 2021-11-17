@@ -133,7 +133,7 @@ export const UserView = ({
                           </div>
                           ) : (
                           <p className={'pNFT'}>
-                            NFT certificate was issued to:
+                            NFT certificate:
                             <a href="https://explorer.testnet.near.org/accounts/test.museum-nft.testnet"
                               target="_blank"
                               rel="noopener noreferrer nofollow"

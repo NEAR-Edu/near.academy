@@ -7,7 +7,7 @@ import {PublicUser} from 'shared/user/PublicUser'
 
 import {HamburgerLeft} from '../Hamburger/Hamburger.controller'
 // prettier-ignore
-import {HeaderLoggedIn, HeaderLoggedOut, HeaderLogo, HeaderMenuIcon, HeaderMenuItem, HeaderStyled, LeftContainer} from "./Header.style";
+import {HeaderLoggedIn, HeaderLoggedOut, HeaderLogo, HeaderMenuItem, HeaderStyled, LeftContainer} from "./Header.style";
 import {Button} from "../Button/Button.controller";
 
 type HeaderViewProps = {
@@ -86,7 +86,6 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: 
                 )}>
                 <Link to={`/user/${user?.username}`}>
                     <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>{user?.username}</HeaderMenuItem>
-                    <HeaderMenuIcon className={classnames(user && 'userIconAccount')} />
                 </Link>
                 <Link
                     to="/"
@@ -95,7 +94,6 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: 
                     }}
                 >
                     <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>LOGOUT</HeaderMenuItem>
-                    <HeaderMenuIcon className={classnames(user && 'userIconLogout')} />
                 </Link>
             </div>
         </HeaderLoggedIn>
