@@ -2,8 +2,6 @@
 
 <Difficulty> Difficulty: 4/5 | Estimated reading time: 6 min </Difficulty>
 
-<Spacer />
-
 ## Contracts
 
 Contracts are a set of functions that can read or alter the state of the NEAR Network. They are executed on the NEAR Virtual Machine (VM). A minimal “Hello, World!” code written in AssemblyScript looks like this:

@@ -9,9 +9,9 @@ export const ButtonsShowResult = styled.div`
   .feedback {
     transform: translate(-50%, 0);
     position: absolute;
-    bottom: 100px;
+    bottom: 130px;
     left: 50%;
-    z-index: 9999;
+    z-index: 999;
 
     @media (max-width: 1300px) {
       max-width: 560px;
@@ -19,6 +19,17 @@ export const ButtonsShowResult = styled.div`
 
     @media (max-width: 998px) {
       display: none;
+    }
+  }
+
+  &.isQuestions {
+    .feedback {
+      bottom: 180px;
+    }
+    @media (max-height: 870px) {
+      .feedback {
+        bottom: 150px;
+      }
     }
   }
 `

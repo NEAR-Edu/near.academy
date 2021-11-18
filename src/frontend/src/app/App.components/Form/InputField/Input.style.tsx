@@ -36,6 +36,10 @@ export const InputWrapp = styled.div`
 
   &.isName {
     background-color: #E2E8F0;
+
+    input {
+      color: rgb(100, 116, 139);
+    }
   }
 
   &.success {

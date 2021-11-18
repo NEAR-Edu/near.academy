@@ -93,9 +93,13 @@ From now, you have the possibility to interact with the NEAR testnet and do your
 
 <Spacer />
 
-## Exercise
+<BackgroundContainer>
+
+<div class="exerciseTitle">Exercise</div>
 
 Create your NEAR testnet account and report it back for validation.
+
+</BackgroundContainer>
 
 <!-- <FormWrapper>
     <Button text="Submit" color="primary" invertIcon />

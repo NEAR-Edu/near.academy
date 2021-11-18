@@ -110,5 +110,10 @@ This function add\_comment takes a string and saves it in the contract. When don
 
 The contract checks if the comment has a short enough length (a maximum length of 500 chars was chosen). The final line adds the comment to the Meme.
 
-## Exercise
+<BackgroundContainer>
+
+<div class="exerciseTitle">Exercise</div>
+
 Check out the add\_comment function in the code snippet of the exercise code box, there are 3 bugs in lines 11 and 12 that need to be fixed.
+
+</BackgroundContainer>

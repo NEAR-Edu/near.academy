@@ -6,7 +6,7 @@ import * as PropTypes from 'prop-types'
 
 import { useHistory } from 'react-router-dom'
 import { useMediaQuery } from '@react-hook/media-query'
-import Editor, { ControlledEditor, DiffEditor, monaco } from '@monaco-editor/react'
+import Editor, { DiffEditor } from '@monaco-editor/react'
 
 import Markdown from 'markdown-to-jsx'
 
@@ -23,7 +23,6 @@ import { ButtonsShowResult } from '../../app/App.components/ButtonsShowResult/Bu
 import { Question } from './Chapter.controller'
 
 import { PublicUser } from 'shared/user/PublicUser'
-import { backgroundColorLight } from 'styles'
 
 import { PENDING, RIGHT } from './Chapter.constants'
 
@@ -61,30 +60,6 @@ import {
 } from './Chapter.style'
 
 
-monaco
-  .init()
-  .then((monacoInstance) => {
-    monacoInstance.editor.defineTheme('myCustomTheme', {
-      base: 'vs',
-      inherit: true,
-      rules: [
-        { token: 'comment', foreground: '#029b3a', fontStyle: 'italic' },
-        { token: 'keyword', foreground: '#0e15e1' },
-        { token: 'number', foreground: '#038c2a' },
-        { token: 'string', foreground: '#910303' },
-      ],
-      colors: {
-        'editor.foreground': '#7b7b7b',
-        'editor.background': backgroundColorLight,
-        'editor.selectionBackground': '#DDF0FF33',
-        'editor.lineHighlightBackground': '#FFFFFF08',
-        'editorCursor.foreground': '#A7A7A7',
-        'editorWhitespace.foreground': '#FFFFFF40',
-      },
-    })
-  })
-  .catch((error) => console.error('An error occurred during initialization of Monaco: ', error))
-
 const MonacoReadOnly = ({ children }: any) => {
   const height = children.split('\n').length * 22
   return (
@@ -95,7 +70,7 @@ const MonacoReadOnly = ({ children }: any) => {
         language="typescript"
         theme="vs-dark"
         options={{
-          lineNumbers: false,
+          lineNumbers: "off",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0, alwaysConsumeMouseWheel: false },
@@ -103,7 +78,7 @@ const MonacoReadOnly = ({ children }: any) => {
           readOnly: true,
           fontSize: 14,
           fontFamily: 'Proxima Nova',
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -113,15 +88,15 @@ const MonacoReadOnly = ({ children }: any) => {
 const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, height, fontSize }: any) => {
   return (
     <div>
-      <ControlledEditor
+      <Editor
         height={height ? height : '600px'}
         width={width}
         value={proposedSolution}
         language="rust"
         theme="vs-dark"
-        onChange={(_, val) => proposedSolutionCallback(val)}
+        onChange={(value: string | undefined, ev: any) => proposedSolutionCallback(value)}
         options={{
-          lineNumbers: true,
+          lineNumbers: "on",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
@@ -129,7 +104,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
           readOnly: false,
           fontSize,
           fontFamily: 'Proxima Nova',
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -147,7 +122,7 @@ const MonacoDiff = ({ solution, proposedSolution, height, fontSize }: any) => {
         // @ts-ignore
         theme="vs-dark"
         options={{
-          lineNumbers: true,
+          lineNumbers: "on",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
@@ -156,7 +131,7 @@ const MonacoDiff = ({ solution, proposedSolution, height, fontSize }: any) => {
           fontSize,
           fontFamily: 'Proxima Nova',
           renderSideBySide: false,
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -387,6 +362,7 @@ export const ChapterView = ({
                   validateCallback={validateCallback}
                   nextStep={nextStep}
                   backStep={backStep}
+                  isQuestions
                 />
               </BottomItems>
             </Wrapp>

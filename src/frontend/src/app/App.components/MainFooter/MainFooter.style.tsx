@@ -71,11 +71,31 @@ export const Footer = styled.footer`
       display: flex;
       align-items: center;
 
-      .nav-items, .social-items {
+      .social-items {
         display: flex;
         align-items: center;
         ul {
           display: flex;
+          align-items: center;
+
+          li + li {
+            margin-left: 10px;
+          }
+
+          a {
+            display: block;
+            height: 32px;
+          }
+        }
+      }
+
+      .nav-items {
+        display: flex;
+        align-items: center;
+        margin-right: 33px;
+        ul {
+          display: flex;
+          align-items: center;
 
           li + li {
             margin-left: 10px;
@@ -85,15 +105,12 @@ export const Footer = styled.footer`
             color: ${near3};
           }
         }
-      }
-
-      .nav-items {
-        margin-right: 33px;
         @media (max-width: 1200px) {
           display: none;
         }
         @media (min-width: 1200px) {
           display: flex;
+          align-items: center;
         }
       }
     }
@@ -104,6 +121,7 @@ export const Footer = styled.footer`
 
       .left-box {
         margin-bottom: 30px;
+        text-align: center;
       }
 
       .logo-footer {
@@ -119,6 +137,7 @@ export const Footer = styled.footer`
     align-items: center;
 
     .left-box {
+      text-align: center;
       margin-bottom: 30px;
     }
 

@@ -132,15 +132,15 @@ export const UserView = ({
                             />
                           </div>
                           ) : (
-                          <p className={'pNFT'}>
-                            NFT certificate:
+                          <div className={'pNFT'}>
+                            <span>NFT certificate:</span>
                             <a href="https://explorer.testnet.near.org/accounts/test.museum-nft.testnet"
                               target="_blank"
                               rel="noopener noreferrer nofollow"
                             >
                               <ExternalLink>{authUser.accountName}</ExternalLink>
                             </a>
-                          </p>
+                          </div>
                         )}
                       </ButtonsContainer>
                     </UserBadgeButtons>

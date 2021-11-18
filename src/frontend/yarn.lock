@@ -1790,10 +1790,20 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@monaco-editor/react@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/@monaco-editor/react/-/react-3.2.1.tgz"
-  integrity sha512-x9ae9fnX9J3zqyB4Df2+hSBzc9xLL6V0LQ6VZP0gqGJw+KnJeNA+/3vHwUGqcVrcKRK3HrEM3TT/tRguJfyjEA==
+"@monaco-editor/loader@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@monaco-editor/loader/-/loader-1.2.0.tgz"
+  integrity sha512-cJVCG/T/KxXgzYnjKqyAgsKDbH9mGLjcXxN6AmwumBwa2rVFkwvGcUj1RJtD0ko4XqLqJxwqsN/Z/KURB5f1OQ==
+  dependencies:
+    state-local "^1.0.6"
+
+"@monaco-editor/react@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/@monaco-editor/react/-/react-4.3.1.tgz"
+  integrity sha512-f+0BK1PP/W5I50hHHmwf11+Ea92E5H1VZXs+wvKplWUWOfyMa1VVwqkJrXjRvbcqHL+XdIGYWhWNdi4McEvnZg==
+  dependencies:
+    "@monaco-editor/loader" "^1.2.0"
+    prop-types "^15.7.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1831,7 +1841,7 @@
 
 "@ramonak/react-progress-bar@^4.1.0":
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@ramonak/react-progress-bar/-/react-progress-bar-4.1.0.tgz#cdca09d3cabbdeb2a7d2d6c9ac27aa2280369c70"
+  resolved "https://registry.npmjs.org/@ramonak/react-progress-bar/-/react-progress-bar-4.1.0.tgz"
   integrity sha512-x99qClRrCQib+s4/6fqB8xAE0WH03s/oknkDiV+F8p3hMgxA76cetvXINKSNxPPOGAIGON+IRZW5mmgivSRwaw==
 
 "@react-hook/media-query@^1.1.1":
@@ -12508,6 +12518,11 @@ stackblur-canvas@^2.0.0:
   version "2.5.0"
   resolved "https://registry.npmjs.org/stackblur-canvas/-/stackblur-canvas-2.5.0.tgz"
   integrity sha512-EeNzTVfj+1In7aSLPKDD03F/ly4RxEuF/EX0YcOG0cKoPXs+SLZxDawQbexQDBzwROs4VKLWTOaZQlZkGBFEIQ==
+
+state-local@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/state-local/-/state-local-1.0.7.tgz"
+  integrity sha512-HTEHMNieakEnoe33shBYcZ7NX83ACUjCu8c40iOGEZsngj9zRnkqS9j1pqQPXwobB0ZcVTk27REb7COQ0UR59w==
 
 static-extend@^0.1.1:
   version "0.1.2"

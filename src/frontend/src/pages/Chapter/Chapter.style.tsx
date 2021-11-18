@@ -245,7 +245,6 @@ export const Wrapp = styled.div`
   @media (max-width: 1400px) {
     position: relative;
     height: 700px;
-    padding: 48px 30px;
   }
 `
 
@@ -266,7 +265,7 @@ export const MonacoContainer = styled.div`
     z-index: 999;
     width: 85%;
 
-    @media (max-width: 1400px) {
+    @media (max-width: 1300px) {
       width: 93%;
     }
     @media (max-width: 998px) {

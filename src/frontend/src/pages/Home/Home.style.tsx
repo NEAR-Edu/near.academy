@@ -203,47 +203,29 @@ export const HomeContainer = styled.div`
     }
 
     .box-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      @media (max-width: 1230px) {
-        flex-direction: column;
-      }
-
-      .card_title {
-        font-weight: bold;
-        font-size: 30px;
-        line-height: 45px;
-        color: ${subTextColor};
-        max-width: 239px;
-        width: 100%;
-
-        @media (max-width: 1230px) {
-          max-width: 100%;
-          text-align: center;
-          margin-bottom: 20px;
-        }
-      }
-
       .card_items {
         width: 100%;
         height: 100%;
-        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         align-items: center;
-        justify-content: space-around;
-
-        @media (max-width: 968px) {
-          flex-direction: column;
-        }
+        grid-column-gap: 30px;
 
         .card_item {
-          max-width: 304px;
-          width: 100%;
 
           @media (max-width: 968px) {
             max-width: 100%;
-            margin-bottom: 20px;
+          }
+
+          .card_title {
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 45px;
+            color: ${subTextColor};
+            max-width: 300px;
+            width: 100%;
           }
         }
 
@@ -268,6 +250,30 @@ export const HomeContainer = styled.div`
           font-size: 21px;
           line-height: 32px;
           color: ${textColor};
+        }
+
+        @media (max-width: 1230px) {
+          grid-template-columns: repeat(3, 1fr);
+          grid-row-gap: 20px;
+
+          .item_1 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            text-align: center;
+
+            .card_title {
+              max-width: 100%;
+            }
+          }
+        }
+
+        @media (max-width: 968px) {
+          grid-template-columns: 1fr;
+
+          .item_1 {
+            grid-column-start: 1;
+            grid-column-end: 1;
+          }
         }
       }
     }

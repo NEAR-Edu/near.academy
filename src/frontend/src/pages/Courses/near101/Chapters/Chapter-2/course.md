@@ -2,6 +2,8 @@
 <div>Chapter 2</div><div className="imgCheckedBox" />
 </ChapterContainer>
 
+<Difficulty>Difficulty: 2/5 | Estimated reading time: 5 min</Difficulty>
+
 # Key Concepts of Web3
 <Spacer />
 We'll start by looking at the main components of Web3, it's a helpful reference to have when you write code.
@@ -76,8 +78,6 @@ Besides cloud databases and other centralized solutions, data can be stored on P
 The NEAR blockchain is public, so anyone can query it to get any data stored in it. Everyone can query the blockchain through a NEAR client, but a dedicated interface is easier to use, and is accessible by anyone regardless of whether they are running the NEAR software or not. Blockchain explorers, as these interfaces are called, can display blockchain data in a more user-friendly way and enhance the entries with off-chain data like current dollar value of a token.
 
 <Spacer />
-
-## Exercise
 
 <BackgroundContainer>
 

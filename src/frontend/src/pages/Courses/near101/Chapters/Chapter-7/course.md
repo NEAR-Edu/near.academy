@@ -127,9 +127,11 @@ Have a look here to get started: <a target="_blank" rel="noreferrer" href="https
 - Turn the museum into a fully decentralized autonomous organization (DAO)
 
 
-## Exercise
+<BackgroundContainer>
+
+<div class="exerciseTitle">Exercise</div>
 
 Use the getRecentComments function via the NEAR cli or use the web app and the near-api-js library to retrieve the latest comment made on the “bob33” meme contract.
 Copy/paste the very latest comment that was made for exercise validation.
 
-<!-- <FormSevenChapter></FormSevenChapter>    -->
+</BackgroundContainer>

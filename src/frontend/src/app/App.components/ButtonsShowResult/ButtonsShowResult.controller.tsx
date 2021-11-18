@@ -6,7 +6,8 @@ type ButtonsShowResultProps = {
   validateCallback: () => void
   nextStep: () => void,
   backStep: () => void,
-  isBack: boolean
+  isBack: boolean,
+  isQuestions: boolean
 }
 
 export const ButtonsShowResult: any = ({
@@ -14,7 +15,8 @@ export const ButtonsShowResult: any = ({
   validateCallback,
   nextStep,
   backStep,
-  isBack
+  isBack,
+  isQuestions
 }: ButtonsShowResultProps) => {
   return <ButtonsShowResultView
     validatorState={validatorState}
@@ -22,5 +24,6 @@ export const ButtonsShowResult: any = ({
     nextStep={nextStep}
     backStep={backStep}
     isBack={isBack}
+    isQuestions={isQuestions}
   />
 }

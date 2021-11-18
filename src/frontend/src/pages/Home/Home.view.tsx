@@ -33,11 +33,13 @@ export const HomeView = () => {
           </section>
           <div className={'wrapp_card'}>
             <div className={'box-inner'}>
-              <div className={'card_title'}>
-                Learn for free and get bounties
-              </div>
               <div className={'card_items'}>
-                <div className={'card_item'}>
+                <div className={'card_item item_1'}>
+                  <div className={'card_title'}>
+                    Learn for free and get bounties
+                  </div>
+                </div>
+                <div className={'card_item item_2'}>
                   <div className={'card_item-title'}>
                     <div className={'box-img'}>
                       <img src="icons/nft_certificates.svg" alt="" width="32px" height="28px" />
@@ -50,7 +52,7 @@ export const HomeView = () => {
                     Complete the course and receive your certificate as a Non-Fungible Token
                   </div>
                 </div>
-                <div className={'card_item'}>
+                <div className={'card_item item_3'}>
                   <div className={'card_item-title'}>
                     <div className={'box-img'}>
                       <img src="icons/learn2earn.svg" alt="" width="34px" height="33px" />
@@ -63,7 +65,7 @@ export const HomeView = () => {
                     Get your NEAR mainnet account created for free on course completion
                   </div>
                 </div>
-                <div className={'card_item'}>
+                <div className={'card_item item_4'}>
                   <div className={'card_item-title'}>
                     <div className={'box-img'}>
                       <img src="icons/contribute2earn.svg" alt="" width="37px" height="34px" />

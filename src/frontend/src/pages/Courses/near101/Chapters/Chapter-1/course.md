@@ -2,6 +2,7 @@
 <div>Chapter 1</div><div className="imgCheckedBox" />
 </ChapterContainer>
 
+<Difficulty>Difficulty: 2/5 | Estimated reading time: 5 min</Difficulty>
 
 # Welcome to the Internet of Value
 

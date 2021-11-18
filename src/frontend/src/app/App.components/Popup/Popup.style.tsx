@@ -3,7 +3,7 @@ import { subTextColor, textColor } from 'styles'
 
 export const PopupBackdrop = styled.div`
   position: fixed;
-  z-index: 99;
+  z-index: 99999;
   width: 100%;
   height: 100%;
   top: 0;

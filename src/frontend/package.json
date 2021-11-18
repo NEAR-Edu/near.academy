@@ -27,7 +27,7 @@
   "dependencies": {
     "@cypress/code-coverage": "^3.9.11",
     "@cypress/instrument-cra": "^1.4.0",
-    "@monaco-editor/react": "3.2.1",
+    "@monaco-editor/react": "^4.3.1",
     "@ramonak/react-progress-bar": "^4.1.0",
     "@react-hook/media-query": "^1.1.1",
     "@redux-offline/redux-offline": "^2.6.0",

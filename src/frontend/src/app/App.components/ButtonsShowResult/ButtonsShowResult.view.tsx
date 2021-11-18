@@ -11,7 +11,8 @@ type ButtonsShowResultViewProps = {
   validateCallback: () => void
   nextStep: () => void,
   backStep: () => void,
-  isBack: boolean
+  isBack: boolean,
+  isQuestions: boolean
 }
 
 export const ButtonsShowResultView = ({
@@ -20,12 +21,13 @@ export const ButtonsShowResultView = ({
   nextStep,
   backStep,
   isBack,
+  isQuestions
 }: ButtonsShowResultViewProps) => {
   const matches = useMediaQuery('(max-width: 998px)')
 
   return (
-    <ButtonsShowResult>
-      <BtnsContainer className={isBack ? 'isBack' : ''}>
+    <ButtonsShowResult className={classnames(isQuestions && 'isQuestions')}>
+      <BtnsContainer className={classnames(isBack && 'isBack')}>
         {isBack ? (<div className={'backBtn'} onClick={backStep}>Back</div>) : null}
         <div className={'rightBtns'}>
           <div className={`${validatorState === RIGHT ? 'nextStep' : ''}`}>

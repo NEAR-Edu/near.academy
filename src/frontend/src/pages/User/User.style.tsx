@@ -264,9 +264,9 @@ export const ButtonsContainer = styled.div`
   }
   .pNFT {
     max-width: 150px;
-    a {
-      margin-left: 5px;
-    }
+    display: flex;
+    flex-direction: column;
+
     @media (max-width: 576px) {
       max-width: 100%;
       margin: 0 auto;

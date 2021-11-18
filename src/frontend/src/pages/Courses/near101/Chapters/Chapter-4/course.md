@@ -103,9 +103,13 @@ At the museum, each meme is created by a contributor and can receive comments, v
 
 <Spacer />
 
-## Exercise
+<BackgroundContainer>
+
+<div class="exerciseTitle">Exercise</div>
 
 Now that you have installed it, get familiar with the NEAR CLI and check out the Museum contract to see how many memes have been added to it so far.
+
+</BackgroundContainer>
 
 <!-- <FormWrapper>
     <Input placeholder="Placeholder" type="text"/>
