@@ -111,6 +111,10 @@ Now that you have installed it, get familiar with the NEAR CLI and check out the
 
 </BackgroundContainer>
 
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>
+
 <!-- <FormWrapper>
     <Input placeholder="Placeholder" type="text"/>
     <Button text="Submit" color="primary" invertIcon />

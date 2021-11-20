@@ -66,7 +66,7 @@ export const HeaderLoggedOut = styled.div`
 
   
 
-  @media (max-width: 1130px) {
+  @media (max-width: 768px) {
     display: none;
   }
   
@@ -96,6 +96,10 @@ export const HeaderLoggedIn = styled.div`
   .accountPage {
     display: flex;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const HeaderMenuItem = styled.div`
@@ -106,6 +110,8 @@ export const HeaderMenuItem = styled.div`
   font-weight: 600;
   display: inline-block;
   padding: 0 20px;
+  max-width: 300px;
+  word-wrap: break-word;
 
   &.accountPage {
     color: ${textColorWhite};

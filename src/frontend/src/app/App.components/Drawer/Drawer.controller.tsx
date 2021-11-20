@@ -8,6 +8,8 @@ import { Option } from '../Select/Select.view'
 import { hideChapterDrawer } from './Drawer.actions'
 import { ChapterDrawerView } from './Drawer.view'
 
+import { logout } from 'pages/Login/Login.actions'
+
 export const ChapterDrawer = () => {
   const dispatch = useDispatch()
   const showingChapter = useSelector((state: State) => state.chapterDrawer && state.chapterDrawer.showingChapter)
@@ -26,6 +28,10 @@ export const ChapterDrawer = () => {
     }
   }
 
+  function removeAuthUserCallback() {
+    dispatch(logout())
+  }
+
   const hideCallback = () => {
     dispatch(hideChapterDrawer())
   }
@@ -38,6 +44,7 @@ export const ChapterDrawer = () => {
       pathname={pathname}
       activeCourse={activeCourse}
       changeCourseCallback={changeCourseCallback}
+      removeAuthUserCallback={removeAuthUserCallback}
     />
   )
 }

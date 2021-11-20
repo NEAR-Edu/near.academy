@@ -43,3 +43,5 @@ If you liked the meme museum theme, you might like some real projects happening 
 
 - <a target="_blank" rel="noreferrer" href="https://paras.id/">Paras</a>. All-in-one social Digital Art Cards (DAC) marketplace for creators and collectors. 
 - <a target="_blank" rel="noreferrer" href="https://mintbase.io/">Mintbase</a>. Global platform that allows anyone, including those with less technical backgrounds, to create their own digital assets verified on multiple blockchains. Mintbase provides creators (minters) with various creative allocation and redemption mechanisms for their customers.
+
+<Spacer />

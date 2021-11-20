@@ -126,6 +126,7 @@ Have a look here to get started: <a target="_blank" rel="noreferrer" href="https
 - Implement a royalty system for meme-makers based on likes and comments
 - Turn the museum into a fully decentralized autonomous organization (DAO)
 
+<Spacer />
 
 <BackgroundContainer>
 
@@ -135,3 +136,7 @@ Use the getRecentComments function via the NEAR cli or use the web app and the n
 Copy/paste the very latest comment that was made for exercise validation.
 
 </BackgroundContainer>
+
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>

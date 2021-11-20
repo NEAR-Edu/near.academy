@@ -17,12 +17,14 @@ import { MainFooter } from '../MainFooter/MainFooter.controller'
 // PLACEHOLDER.
 import { Option } from '../Select/Select.view'
 import { DrawerItem, DrawerMask, DrawerStyled } from './Drawer.style'
+import { HeaderMenuItem } from '../Header/Header.style'
 
 type ChapterDrawerViewProps = {
   showingChapters: boolean
   hideCallback: () => void
   pathname: string
   changeCourseCallback: (e: Option) => void
+  removeAuthUserCallback: () => void,
   activeCourse: Option,
   user?: PublicUser
 }
@@ -44,6 +46,7 @@ export const ChapterDrawerView = ({
   pathname,
   activeCourse,
   changeCourseCallback,
+  removeAuthUserCallback
 }: ChapterDrawerViewProps) => {
   const progressUserChapter = useSelector((state: State) => state.progressChapter.progressUserChapter)
   return (
@@ -106,7 +109,27 @@ export const ChapterDrawerView = ({
               </Link>
             </div> 
           </div>
-        ) : null}
+        ) : (
+          <div className={
+            classnames(
+              'actionContainer',
+            )}>
+              <div>
+                <Link to={`/user/${user?.username}`}>
+                  <Button text={`${user?.username}`} color="primary" />
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    removeAuthUserCallback()
+                  }}>
+                    <HeaderMenuItem>LOGOUT</HeaderMenuItem>
+                  </Link>
+              </div>
+          </div>
+        )}
   
         <MainFooter mobileFooter hideCallback={hideCallback} />
       </DrawerStyled>

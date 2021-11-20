@@ -23,6 +23,7 @@ export const DrawerStyled = styled.div`
   top: 0;
   left: -1px;
   height: 100vh;
+  min-height: -webkit-fill-available;
   z-index: 10;
   max-width: 370px;
   width: 100%;
@@ -100,6 +101,32 @@ export const DrawerStyled = styled.div`
 
     button {
       padding: 12px 0;
+    }
+  }
+
+  .actionContainer {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    div {
+      text-align: center;
+      max-width: 260px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 14px;
+
+      button {
+        padding: 12px 0;
+        word-wrap: break-word;
+      }
+
+      a > div {
+        font-size: 18px;
+      }
+
+      & + div {
+        margin-top: 20px;
+      }
     }
   }
 `

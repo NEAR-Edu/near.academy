@@ -166,6 +166,8 @@ export const Footer = styled.footer`
       }
     }
     .social-items {
+      padding-bottom: 20px;
+      
       ul {
         display: flex;
 

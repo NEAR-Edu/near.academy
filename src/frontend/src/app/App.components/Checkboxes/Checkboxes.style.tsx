@@ -10,6 +10,10 @@ export const CheckboxesStyled = styled.div`
     line-height: 20px;
     color: ${textColorWhite};
 
+    span {
+      line-height: 30px;
+    }
+
     > span:before {
       content: '';
       display: inline-block;

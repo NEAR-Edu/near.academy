@@ -81,3 +81,7 @@ Everyone can create a transaction. But only a signed transaction (with valid key
 
 Step 4: **Redeployment and trustless operation**
 As long as FullAccess private keys are available, you can redeploy. Remove these keys for trustless operation. Congratulations.
+
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>

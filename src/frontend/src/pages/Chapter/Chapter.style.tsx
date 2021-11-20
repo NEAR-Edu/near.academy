@@ -246,6 +246,10 @@ export const Wrapp = styled.div`
     position: relative;
     height: 700px;
   }
+
+  @media (max-width: 998px) {
+    padding: 0 20px;
+  }
 `
 
 export const BottomItems = styled.div`

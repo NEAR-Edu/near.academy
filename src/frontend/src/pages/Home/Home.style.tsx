@@ -559,6 +559,8 @@ export const HomeContainer = styled.div`
 
       @media (max-width: 968px) {
         margin-top: 70px;
+        margin-bottom: 70px;
+        padding-bottom: 0;
       }
 
       .third-title {

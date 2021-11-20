@@ -101,6 +101,10 @@ Create your NEAR testnet account and report it back for validation.
 
 </BackgroundContainer>
 
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>
+
 <!-- <FormWrapper>
     <Button text="Submit" color="primary" invertIcon />
 </FormWrapper> -->
