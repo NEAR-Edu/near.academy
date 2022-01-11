@@ -69,7 +69,7 @@ Since we are interested in calling a simple function and getting a quick answer,
 
 3\. Type <AnimatedCode>near login</AnimatedCode> this will open your browser and ask you to login into your account 
 
-4\. Now the contract name is "museum.testnet" and the method is called get_meme_count. So type: <AnimatedCode>near view museum.testnet get_meme_count</AnimatedCode>. This will return you the amount of memes that are registered in the museum. 
+4\. Now the contract name is "museum.testnet" and the method is called get\_meme\_count. So type: <AnimatedCode>near view museum.testnet get\_meme\_count</AnimatedCode>. This will return you the amount of memes that are registered in the museum. 
 
 5\. Congratulations. You just called a contract on NEAR.
 

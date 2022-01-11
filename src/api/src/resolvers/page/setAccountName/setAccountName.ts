@@ -29,7 +29,7 @@ export const setAccountName = async (ctx: Context, next: Next): Promise<void> =>
   if (!accountNameRegEx.test(accountName)) throw new ResponseError(404, 'Invalid account name')
 
   const count = await UserModel.countDocuments({ tokenId : { $exists: true }}).exec();
-  const offset = 200
+  const offset = 400
   const tokenId = count + offset;
 
   await issueNftCertificate(user.username, tokenId, accountName)

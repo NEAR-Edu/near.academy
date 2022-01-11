@@ -1,50 +1,40 @@
+import classnames from 'classnames'
+import { Formik } from 'formik';
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-
-import classnames from 'classnames'
+import * as Yup from 'yup';
 
 import { Button } from 'app/App.components/Button/Button.controller'
-
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 import { ChapterData } from 'pages/Chapter/Chapter.controller'
-
 import { PublicUser } from 'shared/user/PublicUser'
 
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
 // prettier-ignore
-import { 
-  BottomInnerContainer,
-  BoxImgLogo,
-  BoxText,
-  CertificateContainer,
-  ChaptersContainer,
-  ExternalLink,
-  InnerContainer,
-  Item,
-  NotCompleteBox,
-  TopInnerContainer,
-  UserBadge,
-  UserBadgeButtons,
-  UserNameContainer,
-  UserStyled,
-  UserTitle,
-  BtnContainer,
-  ButtonsContainer,
-  CertificateItself
-} from './User.style'
-import { InputField } from 'app/App.components/Form/InputField/Input.controller'
+import { BottomInnerContainer, BoxImgLogo, BoxText, BtnContainer, ButtonsContainer, CertificateContainer, CertificateItself, ChaptersContainer, ExternalLink, InnerContainer, IssueContainer, Item, NotCompleteBox, Row, TopInnerContainer, UserBadge, UserBadgeButtons, UserNameContainer, UserStyled, UserTitle } from './User.style'
+
+const ValidationSchema = Yup.object().shape({
+  accountName: Yup.string()
+    .matches(/^[a-zA-Z0-9_.-]*.testnet$/, 'Account name can contain lowercase characters, digits, characters (_-) can be used as separators and must end with .testnet')
+    .min(2, 'Account name must be longer than or equal to 2 characters')
+    .max(64, 'Account name must be shorter than or equal to 64 characters (including .testnet)')
+    .required('This field is required!'),
+});
+
+export interface IFormInputs {
+  accountName: string,
+}
 
 type UserViewProps = {
   loading: boolean
   user: PublicUser
   authUser?: PublicUser
   downloadCallback: () => void
-  issueNftCallback: () => void
-  getCertificateCallback: () => void
+  issueNftCallback: (values: IFormInputs) => void
+  getCertificateCallback: (user: PublicUser) => void
   name: string,
-  accountName: string,
   setName: (e: string) => void,
-  setAccountName: (e: string) => void,
 }
 
 export const UserView = ({
@@ -53,12 +43,14 @@ export const UserView = ({
   authUser,
   downloadCallback,
   name,
-  accountName,
   setName,
-  setAccountName,
   getCertificateCallback,
   issueNftCallback,
 }: UserViewProps) => {
+
+  const initialValues: IFormInputs = {
+    accountName: '',
+  };
 
   let badgeUnlocked = false
   let counter = 0
@@ -66,6 +58,10 @@ export const UserView = ({
     counter++
   })
   if (counter >= 8) badgeUnlocked = true
+
+  const handleSubmit = (values: IFormInputs) => {
+    issueNftCallback(values)
+  }
 
   return (
     <UserStyled>
@@ -120,18 +116,7 @@ export const UserView = ({
                             <Button type="button" text="Get URL" loading={loading} onClick={() => { }} />
                           </Link>
                         </div>
-
-                        {!authUser?.accountName ? (
-                          <div className={'issue'}>
-                            <Button
-                              type="button"
-                              text="Issue NFT"
-                              loading={loading}
-                              onClick={() => issueNftCallback()}
-                              color="gradient"
-                            />
-                          </div>
-                          ) : (
+                        {authUser?.accountName ? (
                           <div className={'pNFT'}>
                             <span>NFT certificate:</span>
                             <a href="https://explorer.testnet.near.org/accounts/test.museum-nft.testnet"
@@ -141,8 +126,62 @@ export const UserView = ({
                               <ExternalLink>{authUser.accountName}</ExternalLink>
                             </a>
                           </div>
-                        )}
+                        ): null}
+                        
                       </ButtonsContainer>
+                      <IssueContainer>
+                        {!authUser?.accountName ? (
+                          <Formik
+                            initialValues={initialValues}
+                            validationSchema={ValidationSchema}
+                            onSubmit={handleSubmit}
+                          >
+                            {({
+                              values,
+                              errors,
+                              touched,
+                              setFieldValue,
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              isSubmitting,
+                              isValid
+                            }) => (
+                              <form onSubmit={handleSubmit}>
+                                <Row className={classnames(errors.accountName && touched.accountName && 'isError')}>
+                                  <div className={'box-input'}>
+                                    <InputField
+                                        label="Account Name"
+                                        type="text"
+                                        value={values.accountName}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        name="accountName"
+                                        inputStatus={
+                                          errors.accountName && touched.accountName
+                                            ? 'error' : !errors.accountName && touched.accountName 
+                                            ? 'success' : undefined
+                                          }
+                                        errorMessage={errors.accountName && touched.accountName && errors.accountName}
+                                        isDisabled={false}
+                                        isAccountName
+                                      />
+                                  </div>
+                                  <div className={'issue'}>
+                                    <Button
+                                      text="Issue NFT"
+                                      color="gradient"
+                                      type="submit"
+                                      loading={loading}
+                                      isDisabled={!values.accountName || !!errors.accountName}
+                                    />
+                                  </div>
+                                </Row>
+                              </form>
+                            )}
+                          </Formik>
+                        ) : null}
+                      </IssueContainer>
                     </UserBadgeButtons>
                   </>
                   ) : (
@@ -168,7 +207,7 @@ export const UserView = ({
                           />
                         </div>
                         <BtnContainer>
-                          <Button text="Get your certificate" color="gradient" type="button" loading={loading} onClick={() => getCertificateCallback()} />
+                          <Button text="Get your certificate" color="gradient" type="button" loading={loading} onClick={() => getCertificateCallback(user)} />
                         </BtnContainer>
                       </div>
                     </UserNameContainer>

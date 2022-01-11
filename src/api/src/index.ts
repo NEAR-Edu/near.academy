@@ -23,6 +23,7 @@ const start = async (): Promise<void> => {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
       bufferCommands: false,
       bufferMaxEntries: 0,
     })

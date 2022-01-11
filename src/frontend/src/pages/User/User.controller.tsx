@@ -8,7 +8,7 @@ import { State } from 'reducers'
 import { PublicUser } from 'shared/user/PublicUser'
 
 import { getUser, sendAccountName, sendName } from './User.actions'
-import { UserView } from './User.view'
+import { IFormInputs, UserView } from './User.view'
 
 export const User = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,6 @@ export const User = () => {
   const user = useSelector((state: State) => (state.users as Record<string, PublicUser | undefined>)[username])
   const authUser = useSelector((state: State) => state.auth.user)
   const [name, setName] = useState<string>('')
-  const [accountName, setAccountName] = useState<string>('')
 
   const downloadCallback = () => {
     const doc = new jsPDF({
@@ -31,11 +30,12 @@ export const User = () => {
     doc.save('a4.pdf')
   }
 
-  const getCertificateCallback = () => {
+  const getCertificateCallback = (user: PublicUser) => {
     dispatch(sendName({ name }))
+    dispatch(getUser({ username: user.username }))
   }
 
-  const issueNftCallback = () => {
+  const issueNftCallback = ({ accountName }: IFormInputs) => {
     dispatch(sendAccountName({ accountName }))
   }
 
@@ -51,8 +51,6 @@ export const User = () => {
       downloadCallback={downloadCallback}
       name={name}
       setName={setName}
-      accountName={accountName}
-      setAccountName={setAccountName}
       getCertificateCallback={getCertificateCallback}
       issueNftCallback={issueNftCallback}
     />

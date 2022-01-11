@@ -30,6 +30,7 @@ export const ChapterDrawer = () => {
 
   function removeAuthUserCallback() {
     dispatch(logout())
+    dispatch(hideChapterDrawer())
   }
 
   const hideCallback = () => {

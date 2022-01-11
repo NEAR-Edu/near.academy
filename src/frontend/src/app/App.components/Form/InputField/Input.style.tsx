@@ -42,6 +42,11 @@ export const InputWrapp = styled.div`
     }
   }
 
+  &.isAccountName {
+    max-width: 270px;
+    width: 100%;
+  }
+
   &.success {
     background-color: ${backgroundColorLight};
     border: 2px solid #071C43;
@@ -114,5 +119,10 @@ export const InvalidBox = styled.div`
   
   &:first-letter {
     text-transform: uppercase;
+  }
+
+  &.isAccountName {
+    max-width: 270px;
+    width: 100%;
   }
 `

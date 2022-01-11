@@ -1,5 +1,7 @@
 import { ObjectId } from 'mongodb'
 
+import { DayJs } from '../../../helpers/dayjs';
+
 import { ResponseError } from '../../../shared/mongo/ResponseError'
 import { QuotaModel, Quota } from '../../../shared/quota/Quota'
 import { TEST } from '../../../constants'
@@ -10,17 +12,48 @@ interface RateLimit {
   (userId: ObjectId, quotaType?: QuotaType): Promise<void>
 }
 
+interface IUpdateFields {
+  count?: number,
+  expiresAt?: Date,
+  $inc?: {
+    count: number,
+  }
+}
+
 export const rateLimit: RateLimit = async (userId, quotaType = QuotaType.DEFAULT_LIMIT) => {
   if (process.env.NODE_ENV === TEST) return
 
-  const limitBefore: Quota | null = await QuotaModel.findOneAndUpdate(
-    { userId, quotaType },
-    {
-      $inc: { count: 1 },
-    },
-    { upsert: true, setDefaultsOnInsert: true },
-  ).exec()
+  let fields;
+  let limitBefore: Quota | null = null;
 
-  if (limitBefore && limitBefore.count && limitBefore.count >= QuotaRates[quotaType])
+  const quota = await QuotaModel.findOne({ userId, quotaType });
+
+  const updateQuota = async (updateFields: IUpdateFields) => {
+    const newQuota = await QuotaModel.findOneAndUpdate(
+      { userId, quotaType },
+      updateFields,
+      { upsert: true, setDefaultsOnInsert: true, new: true },
+    ).exec()
+
+    return newQuota;
+  }
+
+  if (quota && DayJs().isAfter(quota.expiresAt)) {
+    fields = {
+      count: 1,
+      expiresAt: DayJs(quota.expiresAt).add(1, 'day').toDate(),
+    }
+
+    limitBefore = await updateQuota(fields)
+
+  } else {
+
+    fields = {
+      $inc: { count: 1 },
+    }
+    limitBefore = await updateQuota(fields)
+  }
+
+  if (limitBefore && limitBefore.count && limitBefore.count > QuotaRates[quotaType])
     throw new ResponseError(429, 'Quota limit reached. Please wait 24h and retry.')
 }

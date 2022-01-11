@@ -164,7 +164,7 @@ export const Item = styled.div`
 export const CertificateContainer = styled.div`
   max-width: 492px;
   width: 100%;
-  height: 370px;
+  /* height: 370px; */
   @media (max-width: 1200px) {
     margin-top: 40px;
     height: 100%;
@@ -256,12 +256,7 @@ export const ButtonsContainer = styled.div`
       background: ${textColorBlue};
     }
   }
-  .issue {
-    button {
-      width: 142px;
-      height: 50px;
-    }
-  }
+
   .pNFT {
     max-width: 150px;
     display: flex;
@@ -280,17 +275,49 @@ export const ButtonsContainer = styled.div`
   @media (max-width: 576px) {
     flex-wrap: wrap;
     gap: 19px;
+  }
+`
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  &.isError {
+    align-items: center;
+  }
+
+  .issue {
+    button {
+      width: 142px;
+      height: 50px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    margin-bottom: 42px;
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .box-input {
+      margin-bottom: 25px;
+    }
 
     .issue {
-      display: flex;
-      justify-content: center;
-      width: 100%;
       button {
         width: 142px;
         height: 50px;
       }
     }
   }
+`
+
+export const IssueContainer = styled.div`
+  margin-top: 25px;
 `
 export const BtnContainer = styled.div`
   max-width: 232px;

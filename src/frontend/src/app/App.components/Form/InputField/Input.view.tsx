@@ -15,6 +15,7 @@ type InputViewProps = {
   isDisabled?: boolean | undefined
   errorMessage?: string | false | undefined
   isName?: boolean | undefined
+  isAccountName?: boolean | undefined
 }
 
 export const InputView = ({
@@ -27,7 +28,8 @@ export const InputView = ({
   inputStatus,
   isDisabled,
   errorMessage,
-  isName
+  isName,
+  isAccountName
 }: InputViewProps) => {
   return (
     <>
@@ -36,7 +38,8 @@ export const InputView = ({
         classnames(
           inputStatus,
           isDisabled && 'disabled',
-          isName && 'isName'
+          isName && 'isName',
+          isAccountName && 'isAccountName'
         )
       }>
         <Input
@@ -52,7 +55,7 @@ export const InputView = ({
       </InputWrapp>
       
       {errorMessage ? (
-        <InvalidBox>
+        <InvalidBox className={classnames(isAccountName && 'isAccountName')}>
           {errorMessage }
         </InvalidBox>
       ) : null}

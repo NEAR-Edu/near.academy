@@ -52,10 +52,14 @@ export const AppRoutes = ({ location }: any) => (
       </LayoutAuthView>
     </Route>
     <Route exact path="/reset-password/:token">
-      <ResetPassword />
+      <LayoutAuthView>
+        <ResetPassword />
+      </LayoutAuthView>
     </Route>
     <Route exact path="/change-password">
-      <ChangePassword />
+      <LayoutAuthView>
+        <ChangePassword /> 
+      </LayoutAuthView>
     </Route>
     <Route path="/*/info">
       <Course />

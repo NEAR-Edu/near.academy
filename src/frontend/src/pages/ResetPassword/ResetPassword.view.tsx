@@ -1,14 +1,37 @@
-import { Button } from 'app/App.components/Button/Button.controller'
-import { InputField } from 'app/App.components/Form/InputField/Input.controller'
-//prettier-ignore
-import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
-import { ResetPasswordInputs } from 'shared/user/ResetPassword'
+
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+import { Button } from 'app/App.components/Button/Button.controller'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 
 //prettier-ignore
-import { ResetPasswordCard, ResetPasswordStyled, ResetPasswordTitle } from './ResetPassword.style'
+import {
+  ResetPasswordCard,
+  ResetPasswordStyled,
+  ResetPasswordTitle,
+  Row,
+  BtnContainer
+} from './ResetPassword.style'
+
+const ValidationSchema = Yup.object().shape({
+  solution: Yup.string()
+    .matches(/^[0-9]*$/, 'Solution can only contain numbers')
+    .min(4, 'Solution must equal to 4 characters')
+    .max(4, 'Solution must equal to 4 characters')
+    .required('This field is required!'),
+  newPassword: Yup.string()
+    .min(8, 'Password must be longer than or equal to 8 characters')
+    .max(50, 'Password must be shorter than or equal to 50 characters')
+    .required('This field is required!'),
+});
+
+interface IFormInputs {
+  solution: string,
+  newPassword: string,
+}
 
 type ResetPasswordViewProps = {
   resetPasswordCallback: (values: any) => void
@@ -16,30 +39,13 @@ type ResetPasswordViewProps = {
 }
 
 export const ResetPasswordView = ({ resetPasswordCallback, loading }: ResetPasswordViewProps) => {
-  const [form, setForm] = useState<FormInputs>({
-    solution: { value: '' },
-    newPassword: { value: '' },
-  })
+  const initialValues: IFormInputs = {
+    solution: '',
+    newPassword: ''
+  };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const updatedForm = updateFormFromChange(e, form, ResetPasswordInputs)
-    setForm(updatedForm)
-  }
-
-  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    const updatedForm = updateFormFromBlur(e, form)
-    setForm(updatedForm)
-  }
-
-  const handleSubmit = (event: SyntheticEvent) => {
-    const updatedForm = updateFormFromSubmit(event, form, ResetPasswordInputs)
-
-    if (!updatedForm.newPassword.error && !updatedForm.solution.error)
-      resetPasswordCallback({
-        newPassword: updatedForm.newPassword.value,
-        solution: updatedForm.solution.value,
-      })
-    else setForm(updatedForm)
+  const handleSubmit = (values: IFormInputs) => {
+    resetPasswordCallback(values)
   }
 
   return (
@@ -48,28 +54,62 @@ export const ResetPasswordView = ({ resetPasswordCallback, loading }: ResetPassw
         <h1>Reset Password</h1>
       </ResetPasswordTitle>
       <ResetPasswordCard>
-        <form onSubmit={handleSubmit}>
-          <InputField
-            name="solution"
-            type="text"
-            onChange={handleChange}
-            value={form.solution.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.solution)}
-            errorMessage={getErrorMessage(form.solution)}
-          />
-          <InputField
-            name="newPassword"
-            type="password"
-            onChange={handleChange}
-            value={form.newPassword.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.newPassword)}
-            errorMessage={getErrorMessage(form.newPassword)}
-          />
-
-          <Button type="submit" text="Submit" icon="login" loading={loading} />
-        </form>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={ValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              setFieldValue,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <Row>
+                  <InputField
+                    label="Solution"
+                    type="text"
+                    value={values.solution}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="solution"
+                    inputStatus={
+                      errors.solution && touched.solution
+                        ? 'error' : !errors.solution && touched.solution 
+                        ? 'success' : undefined
+                      }
+                    errorMessage={errors.solution && touched.solution && errors.solution}
+                    isDisabled={false}
+                  />
+                </Row>
+                <Row>
+                  <InputField
+                    label="New Password"
+                    type="password"
+                    value={values.newPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="newPassword"
+                    inputStatus={
+                      errors.newPassword && touched.newPassword
+                        ? 'error' : !errors.newPassword && touched.newPassword 
+                        ? 'success' : undefined
+                      }
+                    errorMessage={errors.newPassword && touched.newPassword && errors.newPassword}
+                    isDisabled={false}
+                  />
+                </Row>
+                <BtnContainer>
+                  <Button text="Submit" color="gradient" type="submit" loading={loading} />
+                </BtnContainer>
+              </form>
+            )}
+          </Formik>
       </ResetPasswordCard>
     </ResetPasswordStyled>
   )

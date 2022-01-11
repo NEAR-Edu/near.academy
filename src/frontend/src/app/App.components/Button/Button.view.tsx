@@ -1,6 +1,8 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
+import classnames from 'classnames'
+
 import { BUTTON, ButtonColors, ButtonTypes, PRIMARY } from './Button.constants'
 import { ButtonIcon, ButtonLoadingIcon, ButtonStyled, ButtonText } from './Button.style'
 
@@ -14,6 +16,7 @@ type ButtonViewProps = {
   type?: ButtonTypes
   loading: boolean
   invertIcon: boolean
+  isDisabled?: boolean
 }
 
 export const ButtonView = ({
@@ -26,18 +29,22 @@ export const ButtonView = ({
   type,
   loading,
   invertIcon,
+  isDisabled
 }: ButtonViewProps) => {
   let buttonClasses = color
   if (clicked) buttonClasses += ' clicked'
   if (loading) buttonClasses += ' loading'
+
+
   return (
     <ButtonStyled
-      className={buttonClasses}
+      className={classnames(buttonClasses, isDisabled && 'disabled')}
       onClick={() => {
         clickCallback()
         onClick && onClick()
       }}
       type={type}
+      disabled={isDisabled}
     >
       <ButtonText>
         {loading ? (

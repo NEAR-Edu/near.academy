@@ -44,6 +44,10 @@ export const ButtonStyled = styled.button`
   &.gradient {
     color: ${buttonColor};
     background: linear-gradient(97.4deg, #FD9827 -39.51%, #FB0D1B 105.97%);
+
+    &.disabled {
+      background: linear-gradient(97.4deg, #9e601a -39.51%, #920610 105.97%);
+    }
   }
 
   &.blueGradient {
