@@ -45,7 +45,7 @@ near call museum.testnet add\_myself\_as\_contributor --accountId YOUR\_ACCOUNT\
 <Highlight class="language-bash">
 near call museum.testnet add\_meme \
 '{"meme" : "bob", "title" : "god", "data" : "https://9gag.com/gag/ad8K0vj", "category" : 4}' \
---accountId YOUR\_ACCOUNT\_NAME.testnet --amount 3
+--accountId YOUR\_ACCOUNT\_NAME.testnet --amount 3 --gas=300000000000000
 </Highlight>
 
 Once the meme contract is deployed, you can verify that it was created by returning the list of all available memes: <AnimatedCode>near view museum.testnet get\_meme\_list</AnimatedCode>. You may now also find it on the blockchain explorer, it is in the public domain now.
