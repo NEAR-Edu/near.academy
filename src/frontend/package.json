@@ -70,6 +70,7 @@
     "logrocket": "^2.1.1",
     "markdown-to-jsx": "^6.11.4",
     "mockdate": "^3.0.5",
+    "near-api-js": "^0.44.2",
     "raw-loader": "^4.0.2",
     "rc-slider": "9.2.4",
     "react": "^16.14.0",
