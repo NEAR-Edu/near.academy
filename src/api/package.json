@@ -37,7 +37,7 @@
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^5.2.0",
     "mongoose": "^5.9.18",
-    "near-api-js": "^0.41.0",
+    "near-api-js": "^0.44.2",
     "rate-limiter-flexible": "^2.1.6",
     "reflect-metadata": "^0.1.13",
     "speakingurl": "^14.0.1",

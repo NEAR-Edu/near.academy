@@ -24,23 +24,23 @@ export const setAccountName = async (ctx: Context, next: Next): Promise<void> =>
 
   await rateLimit(user._id)
 
-  const accountNameRegEx = /^[a-zA-Z0-9_]*.(testnet|near)$/;
-  console.log(accountName, accountNameRegEx.test(accountName), accountNameRegEx.test("foxtnettestnet"))
+  const accountNameRegEx = /^[a-zA-Z0-9_]*.(testnet|near)$/
+  console.log(accountName, accountNameRegEx.test(accountName), accountNameRegEx.test('foxtnettestnet'))
   if (!accountNameRegEx.test(accountName)) throw new ResponseError(404, 'Invalid account name')
 
-  const count = await UserModel.countDocuments({ tokenId : { $exists: true }}).exec();
+  const count = await UserModel.countDocuments({ tokenId: { $exists: true } }).exec()
   const offset = 400
-  const tokenId = count + offset;
+  const tokenId = count + offset
 
   await issueNftCertificate(user.username, tokenId, accountName)
 
-  const updatedUser: User = await UserModel.updateOne(
+  const updatedUser: User = (await UserModel.updateOne(
     { _id: user._id },
     { $set: { tokenId: count + offset, accountName } },
-  ).exec() as User
+  ).exec()) as User
 
   const publicUser: PublicUser = toPublicUser(updatedUser)
-  
+
   const response: SetAccountNameOutputs = { user: publicUser }
 
   ctx.status = 200
