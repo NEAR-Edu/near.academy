@@ -90,7 +90,7 @@ export const Chapter = () => {
           })
       })
     })
-  }, [pathname])
+  }, [pathname, dispatch, user])
 
 
   chapterData.forEach((chapter, i) => {

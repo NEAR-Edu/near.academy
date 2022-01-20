@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-import { Card, CardPage, FadeInFromTop, primaryColor } from '../../styles'
+import { FadeInFromTop, primaryColor } from '../../styles'
 
 export const ChangePasswordStyled = styled.div``
 
@@ -40,7 +40,6 @@ export const ChangePasswordTitle = styled(FadeInFromTop)`
   @media (max-width: 998px) {
     margin-top: 35px;
   }
-
 `
 
 export const ChangePasswordSignUp = styled.div`
