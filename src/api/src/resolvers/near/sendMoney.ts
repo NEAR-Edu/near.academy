@@ -21,6 +21,7 @@ keyStore.setKey(networkId, contractName, KeyPair.fromString(credentials.private_
 
 const near = new Near({
   networkId, nodeUrl,
+  headers: {},
   deps: { keyStore },
 });
 
