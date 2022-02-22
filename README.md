@@ -11,7 +11,7 @@ cd near.academy
 cp src/frontend/.env.example src/frontend/.env
 cp src/api/.env.example src/api/.env
 
-# 3. Edit those .env files as appropriate. Ask Ryan Walsh or Albert Peci (oceanByte) for the secrets.
+# 3. Edit those .env files as appropriate. Ask Ryan Walsh or Albert Peci (oceanByte) for the secrets. Do NOT set your local machine to connect to the remote production database!
 
 # 4. Install dependencies for frontend and backend
 yarn
