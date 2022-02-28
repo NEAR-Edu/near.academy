@@ -5,18 +5,6 @@
   "scripts": {
     "start": "PORT=8080 NODE_ENV=development nodemon --watch src -e ts,tsx --exec ts-node src/index.ts",
     "build": "PORT=3000 NODE_ENV=production tsc",
-    "docker-create": "doctl k8s cluster create --region fra1 --node-pool \"name=nearacademy-api;size=s-1vcpu-2gb;count=1;auto-scale=true;min-nodes=1;max-nodes=3\" nearacademy-api --wait && doctl kubernetes cluster kubeconfig save nearacademy-api",
-    "docker-build": "docker build -t labs101/nearacademy-api . --no-cache --platform linux/amd64",
-    "docker-run": "docker run --rm -it -p 3000:3000 labs101/nearacademy-api",
-    "docker-push": "doctl registry login && docker tag labs101/nearacademy-api registry.digitalocean.com/labs101/nearacademy-api && docker push registry.digitalocean.com/labs101/nearacademy-api",
-    "docker-patch": "doctl registry kubernetes-manifest | kubectl --context do-fra1-nearacademy-api apply -f - && kubectl --context do-fra1-nearacademy-api patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-labs101\"}]}'",
-    "docker-secrets": "kubectl --context do-fra1-nearacademy-api create secret generic person --from-env-file=.env",
-    "docker-deploy": "kubectl --context do-fra1-nearacademy-api apply -f kubernetesDeployment.json",
-    "docker-serve": "kubectl --context do-fra1-nearacademy-api apply -f kubernetesService.json",
-    "docker-restart": "kubectl --context do-fra1-nearacademy-api delete pods -l app=nearacademy-api",
-    "docker-logs": "kubectl --context do-fra1-nearacademy-api logs --timestamps -l app=nearacademy-api",
-    "docker-update": "yarn run docker-build && yarn run docker-push && yarn run docker-restart",
-    "docker-install": "yarn run docker-build && yarn run docker-push && yarn run docker-patch && yarn run docker-deploy && yarn run docker-serve",
     "test": "jest --runInBand --verbose",
     "coverage": "jest --runInBand --collectCoverage"
   },
@@ -70,7 +58,7 @@
     "typescript": "^3.9.5"
   },
   "engines": {
-      "node": "^16.14.0"
+    "node": "^16.14.0"
   },
   "jest": {
     "testEnvironment": "node"
