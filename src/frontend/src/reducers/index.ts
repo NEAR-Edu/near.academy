@@ -10,6 +10,7 @@ import { chapterDrawer, ChapterDrawerState } from './chapterDrawer'
 import { gdpr, GdprState } from './gdpr'
 import { loading, LoadingState } from './loading'
 import { progressBar, ProgressBarState } from './progressBar'
+import { progressChapter, ProgressChapterState } from './progressChapter'
 import { serviceWorker, ServiceWorkerState } from './serviceWorker'
 import { toaster, ToasterState } from './toaster'
 import { users, UsersState } from './users'
@@ -24,6 +25,7 @@ export const reducers = (history: any) =>
     chapterDrawer,
     loginDrawer,
     progressBar,
+    progressChapter,
     serviceWorker,
     gdpr,
   })
@@ -36,6 +38,7 @@ export interface State {
   loginDrawer: LoginDrawerState
   chapterDrawer: ChapterDrawerState
   progressBar: ProgressBarState
+  progressChapter: ProgressChapterState
   serviceWorker: ServiceWorkerState
   gdpr: GdprState
 }

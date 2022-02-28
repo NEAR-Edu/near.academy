@@ -10,5 +10,6 @@ export const AppMeta = () => (
     <meta property="og:site_name" content="NearAcademy" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="Learn Near Protocol" />
+
   </Helmet>
 )

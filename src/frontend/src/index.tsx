@@ -8,12 +8,26 @@ import { App } from './app/App.controller'
 import { configureStore } from './app/App.store'
 import { unregister } from './serviceWorker'
 import { GlobalStyle } from './styles'
+import { hotjar } from 'react-hotjar';
+// @ts-ignore
+import TagManager from 'react-gtm-module'
+import TwitterConvTrkr from "react-twitter-conversion-tracker";
 
 import './styles/fonts.css'
 
 export const store = configureStore({})
 
 ReactGA.initialize('UA-192160338-1')
+hotjar.initialize(2383690, 6);
+
+const tagManagerArgs = {
+    gtmId: process.env.REACT_APP_GTM_ID
+}
+TagManager.initialize(tagManagerArgs);
+
+TwitterConvTrkr.init("o6dxd");
+TwitterConvTrkr.pageView();
+
 
 export const Root = () => {
   return (

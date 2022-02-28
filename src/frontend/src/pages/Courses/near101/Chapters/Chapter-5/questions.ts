@@ -7,10 +7,6 @@ export const questions = [
             "A fee perceived by contractors of the NEAR network",
             "A transaction involving more than one party in the NEAR network"
         ],
-        responses: [
-          "A legal agreement for storing financial assets on the NEAR network",
-          "A fee perceived by contractors of the NEAR network",
-          "A transaction involving more than one party in the NEAR network"
-        ],
+        responses: [],
     }
 ]

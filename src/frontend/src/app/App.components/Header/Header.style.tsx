@@ -1,73 +1,126 @@
 import styled from 'styled-components/macro'
-import { bgTextColor, near6, primaryColor, textColor } from 'styles'
+
+import { backgroundColorLight, textColorMenuItem, textColorWhite } from 'styles'
 
 export const HeaderStyled = styled.div`
   position: relative;
   text-align: center;
-  height: 50px;
-  z-index: 1;
-  background-color: ${near6};
+  height: 70px;
+  background-color: ${backgroundColorLight};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 46px;
+  color: ${textColorWhite};
+
+  &.inChapter {
+    @media (max-width:600px) {
+      border-bottom: 1px solid #E3E3E3;
+    }
+  }
+  &.authPage {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    
+    @media (max-width: 1200px) {
+      border-bottom: 1px solid rgba(255,255,255, .2);
+    }
+  }
+
+  @media (max-width: 1130px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`
+
+export const LeftContainer = styled.div`
+  display: flex;
 `
 
 export const HeaderLogo = styled.img`
-  padding: 11px;
-  z-index: 1;
+  padding: 0px;
   margin: auto;
+  @media (max-width: 450px) {
+    max-width: 200px;
+  }
 `
 
 export const HeaderLoggedOut = styled.div`
-  position: absolute;
-  top: 0;
-  right: 10px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
 
-  @media (max-width: 1130px) {
+  .inChapter {
     display: none;
+  }
+
+  .authPage {
+    display: none;
+  }
+
+  
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+  
+  .get-started { 
+    display: flex;
+    align-items: center;
+    
+    button {
+      height: 40px;
+      padding: 0px 20px; 
+      font-size: 16px;
+      margin-right: 20px;
+    }
   }
 `
 
 export const HeaderLoggedIn = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
-  text-transform: uppercase;
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
 
-  @media (max-width: 1130px) {
+  .inChapter {
+    display: none;
+  }
+
+  .accountPage {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
     display: none;
   }
 `
 
 export const HeaderMenuItem = styled.div`
   position: relative;
-  color: ${textColor};
-  line-height: 50px;
-  font-size: 14px;
-  font-weight: 700;
+  color: ${textColorMenuItem};
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
   display: inline-block;
   padding: 0 20px;
+  max-width: 300px;
+  word-wrap: break-word;
 
-  &.login {
-    background-color: ${primaryColor};
-    color: ${bgTextColor};
-    width: 128px;
-    display: grid;
-    grid-template-columns: auto 50px;
-    text-align: right;
+  &.accountPage {
+    color: ${textColorWhite};
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
 
-    > div {
-      line-height: 50px;
-    }
-
-    > svg {
-      height: 28px;
-      width: 28px;
-      margin: 11px;
-      stroke: ${bgTextColor};
+    @media (max-width: 992px) {
+      display: none;
     }
   }
 

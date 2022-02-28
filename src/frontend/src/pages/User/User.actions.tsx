@@ -1,5 +1,6 @@
 import { store } from 'index'
 import { GetPublicUserInputs } from 'shared/page/GetPublicUser'
+import { SetAccountNameInputs } from 'shared/page/SetAccountName'
 import { SetNameInputs } from 'shared/page/SetName'
 
 export const GET_USER_REQUEST = 'GET_USER_REQUEST'
@@ -32,7 +33,7 @@ export const SET_NAME_ROLLBACK = 'SET_NAME_ROLLBACK'
 export const sendName = ({ name }: SetNameInputs) => (dispatch: any) => {
   dispatch({
     type: SET_NAME_REQUEST,
-    payload: {},
+    payload: { name },
     meta: {
       offline: {
         effect: {
@@ -43,6 +44,30 @@ export const sendName = ({ name }: SetNameInputs) => (dispatch: any) => {
         },
         commit: { type: SET_NAME_COMMIT, meta: {} },
         rollback: { type: SET_NAME_ROLLBACK, meta: {} },
+      },
+    },
+  })
+}
+
+
+export const SET_ACCOUNT_NAME_REQUEST = 'SET_ACCOUNT_NAME_REQUEST'
+export const SET_ACCOUNT_NAME_COMMIT = 'GET_ACCOUNT_NAME_COMMIT'
+export const SET_ACCOUNT_NAME_ROLLBACK = 'SET_ACCOUNT_NAME_ROLLBACK'
+
+export const sendAccountName = ({ accountName }: SetAccountNameInputs) => (dispatch: any) => {
+  dispatch({
+    type: SET_ACCOUNT_NAME_REQUEST,
+    payload: {},
+    meta: {
+      offline: {
+        effect: {
+          url: `${process.env.REACT_APP_BACKEND_URL}/page/set-account-name`,
+          method: 'POST',
+          headers: { Authorization: `Bearer ${store.getState().auth.jwt}` },
+          json: { accountName },
+        },
+        commit: { type: SET_ACCOUNT_NAME_COMMIT, meta: {} },
+        rollback: { type: SET_ACCOUNT_NAME_ROLLBACK, meta: {} },
       },
     },
   })

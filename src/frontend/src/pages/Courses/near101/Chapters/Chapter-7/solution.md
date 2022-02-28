@@ -12,10 +12,11 @@ async function setupMemeContracts() {
    await Promise.all(memeContracts)
 }
 
-const memeContracts = setupMemeContracts();
+const memeContracts = [];
+setupMemeContracts();
 
 async function getRecentComments(index) {
    // TODO implement me
-   const recentComments = await memes[index].get_recent_comments();
+   const recentComments = await memeContracts[index].get_recent_comments();
    return recentComments;
 }

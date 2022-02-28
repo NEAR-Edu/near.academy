@@ -6,17 +6,22 @@ import { backgroundColorDark, placeholderColor, textColor } from './colors'
 export const GlobalStyle = createGlobalStyle`
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Inter', sans-serif;;
+  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Inter', sans-serif;; */
   font-display: optional;
-  margin: 0;
-  padding: 0;
   background-color: ${backgroundColorDark};
   color: ${textColor};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  ._hj-3ZiaL__MinimizedWidgetBottom__container {
+            bottom: 40% !important;
+        }
 }
 
 h1 {
@@ -70,16 +75,6 @@ a:visited {
 
 a:hover {
   opacity: 0.9;
-}
-
-p {
-    font-family: 'Inter', sans-serif;
-    display: block;
-    margin-block-start: 10px;
-    margin-block-end: 10px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-size: 22px;
 }
 
 
@@ -230,5 +225,4 @@ select:-webkit-autofill:focus {
 .rc-slider-mark-text {
   display: none !important;
 }
-
 `

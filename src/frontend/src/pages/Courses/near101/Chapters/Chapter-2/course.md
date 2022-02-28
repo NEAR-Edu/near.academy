@@ -1,30 +1,16 @@
+<ChapterContainer>
+<div>Chapter 2</div><div className="imgCheckedBox" />
+</ChapterContainer>
+
+<Difficulty>Difficulty: 2/5 | Estimated reading time: 5 min</Difficulty>
+
 # Key Concepts of Web3
-
-<Difficulty>Difficulty: 2/5 | Estimated reading time: 8 min</Difficulty>
-
 <Spacer />
-
-<narrativeText style="background: #F0EC74; color: #000000">
-    <div class="image-wrapper">
-        <img alt="story_image_2_0" src="/images/chap_2_0.png">
-    </div>
-    <VerticalAlign>
-        "My dear friend, i’ve known you for a long time. Aren’t you bored of your job at Soga? These social gaming companies are so 2020, lol. I heard from Marco there was a job opening at the new Meme Museum in Rio de Janeiro, what an awesome opportunity. Memes are such a fascinating form of collective expression, this is so the future of anarchivism." <Spacer />
-        "That looks cool! The Museum is new, and you’d like to learn more about them. Nowadays, most jobs are filled and found via a decentralized marketplace, Decentrajob, the dApp that replaced Upwork back in 2025.
-        Let’s have a closer look…"
-    </VerticalAlign>
-</narrativeText>
-<Spacer />
-
 We'll start by looking at the main components of Web3, it's a helpful reference to have when you write code.
+<Spacer />
 
-## Distributed ledger
-
-The distributed ledger, or blockchain, is the backbone of the network. This is where states are publicly stored.
-
-## Validator nodes
-
-Validator nodes are servers that provide computation services and security to the network. In permissionless networks, **anyone is free to run a Validator node**, following a set of requirements that are specific to this network.
+- Distributed ledger. The distributed ledger, or blockchain, is the backbone of the network. This is where states are publicly stored.
+- Validator nodes. Validator nodes are servers that provide computation services and security to the network. In permissionless networks, **anyone is free to run a Validator node**, following a set of requirements that are specific to this network.
 
 ## Execution capabilities
 
@@ -44,24 +30,26 @@ Applications are usually broken into logical chunks called "tiers", where every 
 
 **Decentralized applications** (or **dApps**) follow the same structure overall. The only difference is that the back-end gets enhanced by connecting it to public Web3 infrastructure. The front-end and the storage can be integrated in dApps just like in any other Apps.
 
-In a dApp, security and access are provided by cryptography (public/private keys) rather than username and password or oAuth. This approach is also called **passwordless identification**. **Users keep their identity through dApps** rather than having a different one in each or rely on third-party identity management.
+<Spacer />
 
-<ImageContainer>
-    <img alt="story_image_2_1" src="/images/chap_2_1.png">
-</ImageContainer>
+In a dApp, security and access are provided by cryptography (public/private keys) rather than username and password or oAuth. This approach is also called **passwordless identification**. **Users keep their identity through dApps** rather than having a different one in each or rely on third-party identity management.
 
 For users, access to the open web is based only on a private key, which is used to unlock all dApps and services on the blockchain.
 
 Users access and interact with dApps with a web browser just like any other App; this makes it easy for them to switch. And dApps offer many improvements to the user experience:
+
+<Spacer />
 
 - Identification is done only once for access across dApps
 - Ownership of personal data remains in users’ hands at all times
 - Interactions are opt-in by default
 - Payment and exchanges are handled just like any other action
 
-Behind the scenes, the framework connecting users with digital services is slightly different with a dApp.
+<Spacer />
 
-Consider all the possible aspects of an application that may be decentralized:
+Behind the scenes, the framework connecting users with digital services is slightly different with a dApp. Consider all the possible aspects of an application that may be decentralized:
+
+<Spacer />
 
 - Backend software (application logic)
 - Frontend software
@@ -87,10 +75,16 @@ Besides cloud databases and other centralized solutions, data can be stored on P
 
 ## Check it for yourself with a Block Explorer!
 
-The NEAR blockchain is public, so anyone can query it to get any data stored in it. Everyone can query the blockchain through the NEAR client, but a dedicated interface is easier to use, and is accessible by anyone regardless of whether they are running the NEAR software or not. Blockchain explorers, as these interfaces are called, can display blockchain data in a more user-friendly way and enhance the entries with off-chain data like current dollar value of a token.
+The NEAR blockchain is public, so anyone can query it to get any data stored in it. Everyone can query the blockchain through a NEAR client, but a dedicated interface is easier to use, and is accessible by anyone regardless of whether they are running the NEAR software or not. Blockchain explorers, as these interfaces are called, can display blockchain data in a more user-friendly way and enhance the entries with off-chain data like current dollar value of a token.
 
 <Spacer />
 
-## Exercise
+<BackgroundContainer>
 
-To find the job offer on Decentrajob. Visit the <a target="_blank" href="https://explorer.testnet.near.org/">testnet explorer</a> and search for the “decentrajob.testnet” account. Here you see an overview of all transactions that happened on that account. Look for the latest transaction set_open_job called by museum_director.testnet and click on the link that looks something like G8xp5V6...This will display the details about the transaction, including all arguments that were used to call the function. Select the correct answer.
+<div class="exerciseTitle">Exercise</div>
+To find the job offer on Decentrajob. Visit the <a target="_blank" rel="noopener noreferrer" href="https://explorer.testnet.near.org/">testnet explorer</a> and search for the “decentrajob.testnet” account. Here you see an overview of all transactions that happened on that account. Look for the latest transaction set\_open\_job called by museum\_director.testnet and click on the link that looks something like "G8xp5V6...". This will display the details about the transaction, including all arguments that were used to call the function. Select the correct answer.
+</BackgroundContainer>
+
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>

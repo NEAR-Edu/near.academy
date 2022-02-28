@@ -13,10 +13,11 @@ type ButtonProps = {
   onClick?: () => void
   type?: ButtonTypes
   loading: boolean
-  invertIcon: boolean
+  invertIcon: boolean,
+  isDisabled?: boolean,
 }
 
-export const Button = ({ text, icon, color, onClick, type, loading, invertIcon }: ButtonProps) => {
+export const Button = ({ text, icon, color, onClick, type, loading, invertIcon, isDisabled }: ButtonProps) => {
   const isMounted = useIsMounted()
   const [clicked, setClicked] = useState(false)
   const clickCallback = () => {
@@ -38,6 +39,7 @@ export const Button = ({ text, icon, color, onClick, type, loading, invertIcon }
       type={type}
       loading={loading}
       invertIcon={invertIcon}
+      isDisabled={isDisabled}
     />
   )
 }

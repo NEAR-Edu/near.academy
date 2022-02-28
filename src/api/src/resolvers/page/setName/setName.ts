@@ -10,7 +10,7 @@ import { User, UserModel } from '../../../shared/user/User'
 import { rateLimit } from '../../quota/rateLimit/rateLimit'
 import { authenticate } from '../../user/helpers/authenticate'
 
-export const PUBLIC_USER_MONGO_SELECTOR = '_id username emailVerified progress createdAt'
+export const PUBLIC_USER_MONGO_SELECTOR = '_id username emailVerified progress createdAt certifiedAt'
 
 export const setName = async (ctx: Context, next: Next): Promise<void> => {
   const setNameArgs = plainToClass(SetNameInputs, ctx.request.body, { excludeExtraneousValues: true })
@@ -21,14 +21,18 @@ export const setName = async (ctx: Context, next: Next): Promise<void> => {
 
   await rateLimit(user._id)
 
+  const now: Date = new Date();
+
   await UserModel.updateOne(
     { _id: user._id },
-    { $set: { name } },
+    { $set: { name: name, certifiedAt: now } },
   ).exec()
 
   const updatedUser: User = await UserModel.findOne(
     { _id: user._id },
-  ).lean()  as User
+  ).lean() as User
+
+  console.log(updatedUser)
 
   const publicUser: PublicUser = toPublicUser(updatedUser)
   

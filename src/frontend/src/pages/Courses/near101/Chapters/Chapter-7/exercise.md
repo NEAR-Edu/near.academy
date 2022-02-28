@@ -12,7 +12,8 @@ async function setupMemeContracts() {
    await Promise.all(memeContracts)
 }
 
-const memeContracts = setupMemeContracts();
+const memeContracts = [];
+setupMemeContracts();
 
 async function getRecentComments(index) {
    // TODO implement me

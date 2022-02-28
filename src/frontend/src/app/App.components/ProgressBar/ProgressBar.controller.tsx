@@ -16,14 +16,14 @@ export const ProgressBar = () => {
   useEffect(() => {
     if (progressBarLoading) {
       setStatus(SHOWING)
-      timeout.current = setTimeout(() => {
+      timeout.current = window.setTimeout(() => {
         dispatch(hideProgressBar())
         setStatus(READY)
       }, 30000)
     } else {
       setStatus(DONE)
       clearTimeout(timeout.current)
-      setTimeout(() => setStatus(READY), 500)
+      window.setTimeout(() => setStatus(READY), 500)
     }
   }, [progressBarLoading, dispatch])
 

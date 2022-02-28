@@ -7,8 +7,8 @@ import { useParams } from 'react-router-dom'
 import { State } from 'reducers'
 import { PublicUser } from 'shared/user/PublicUser'
 
-import { getUser, sendName } from './User.actions'
-import { UserView } from './User.view'
+import { getUser, sendAccountName, sendName } from './User.actions'
+import { IFormInputs, UserView } from './User.view'
 
 export const User = () => {
   const dispatch = useDispatch()
@@ -30,8 +30,13 @@ export const User = () => {
     doc.save('a4.pdf')
   }
 
-  const getCertificateCallback = () => {
+  const getCertificateCallback = (user: PublicUser) => {
     dispatch(sendName({ name }))
+    dispatch(getUser({ username: user.username }))
+  }
+
+  const issueNftCallback = ({ accountName }: IFormInputs) => {
+    dispatch(sendAccountName({ accountName }))
   }
 
   useEffect(() => {
@@ -47,6 +52,7 @@ export const User = () => {
       name={name}
       setName={setName}
       getCertificateCallback={getCertificateCallback}
+      issueNftCallback={issueNftCallback}
     />
   )
 }

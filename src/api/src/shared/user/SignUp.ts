@@ -26,6 +26,11 @@ export class SignUpInputs {
   confirmPassword!: string
 
   @Expose()
+  @Length(0, 20)
+  @Matches(/^[a-zA-Z0-9_]*$/, { message: 'Referral can only contain letters, numbers and underscores' })
+  referral?: string
+
+  @Expose()
   @Length(100, 1000)
   recaptchaToken!: string
 }

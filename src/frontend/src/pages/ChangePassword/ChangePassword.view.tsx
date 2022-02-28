@@ -1,16 +1,38 @@
-import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { InputSpacer } from 'app/App.components/Input/Input.style'
-//prettier-ignore
-import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
-import { ChangePasswordInputs } from 'shared/user/ChangePassword'
+
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+import { Button } from 'app/App.components/Button/Button.controller'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
+
 
 import { ChangePasswordMeta } from './ChangePassword.meta'
 //prettier-ignore
-import { ChangePasswordCard, ChangePasswordStyled, ChangePasswordTitle } from './ChangePassword.style'
+import {
+  ChangePasswordCard,
+  ChangePasswordStyled,
+  ChangePasswordTitle,
+  Row,
+  BtnContainer
+} from './ChangePassword.style'
+
+const ValidationSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(8, 'Password must be longer than or equal to 8 characters')
+    .max(50, 'Password must be shorter than or equal to 50 characters')
+    .required('This field is required!'),
+  newPassword: Yup.string()
+    .min(8, 'Password must be longer than or equal to 8 characters')
+    .max(50, 'Password must be shorter than or equal to 50 characters')
+    .required('This field is required!'),
+});
+
+interface IFormInputs {
+  password: string,
+  newPassword: string,
+}
 
 type ChangePasswordViewProps = {
   changePasswordCallback: (values: any) => void
@@ -18,30 +40,13 @@ type ChangePasswordViewProps = {
 }
 
 export const ChangePasswordView = ({ changePasswordCallback, loading }: ChangePasswordViewProps) => {
-  const [form, setForm] = useState<FormInputs>({
-    password: { value: '' },
-    newPassword: { value: '' },
-  })
+  const initialValues: IFormInputs = {
+    password: '',
+    newPassword: ''
+  };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const updatedForm = updateFormFromChange(e, form, ChangePasswordInputs)
-    setForm(updatedForm)
-  }
-
-  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    const updatedForm = updateFormFromBlur(e, form)
-    setForm(updatedForm)
-  }
-
-  const handleSubmit = (event: SyntheticEvent) => {
-    const updatedForm = updateFormFromSubmit(event, form, ChangePasswordInputs)
-
-    if (!updatedForm.password.error && !updatedForm.newPassword.error)
-      changePasswordCallback({
-        password: updatedForm.password.value,
-        newPassword: updatedForm.newPassword.value,
-      })
-    else setForm(updatedForm)
+  const handleSubmit = (values: IFormInputs) => {
+    changePasswordCallback(values)
   }
 
   return (
@@ -51,32 +56,62 @@ export const ChangePasswordView = ({ changePasswordCallback, loading }: ChangePa
         <h1>Change Password</h1>
       </ChangePasswordTitle>
       <ChangePasswordCard>
-        <form onSubmit={handleSubmit}>
-          <Input
-            icon="password"
-            name="password"
-            placeholder="Current password"
-            type="password"
-            onChange={handleChange}
-            value={form.password.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.password)}
-            errorMessage={getErrorMessage(form.password)}
-          />
-          <Input
-            icon="password"
-            name="newPassword"
-            placeholder="New password"
-            type="password"
-            onChange={handleChange}
-            value={form.newPassword.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.newPassword)}
-            errorMessage={getErrorMessage(form.newPassword)}
-          />
-          <InputSpacer />
-          <Button type="submit" text="Submit" icon="login" loading={loading} />
-        </form>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={ValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              setFieldValue,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <Row>
+                  <InputField
+                    label="Password"
+                    type="text"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="password"
+                    inputStatus={
+                      errors.password && touched.password
+                        ? 'error' : !errors.password && touched.password 
+                        ? 'success' : undefined
+                      }
+                    errorMessage={errors.password && touched.password && errors.password}
+                    isDisabled={false}
+                  />
+                </Row>
+                <Row>
+                  <InputField
+                    label="New Password"
+                    type="password"
+                    value={values.newPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="newPassword"
+                    inputStatus={
+                      errors.newPassword && touched.newPassword
+                        ? 'error' : !errors.newPassword && touched.newPassword 
+                        ? 'success' : undefined
+                      }
+                    errorMessage={errors.newPassword && touched.newPassword && errors.newPassword}
+                    isDisabled={false}
+                  />
+                </Row>
+                <BtnContainer>
+                  <Button text="Submit" color="gradient" type="submit" loading={loading} />
+                </BtnContainer>
+              </form>
+            )}
+          </Formik>
       </ChangePasswordCard>
     </ChangePasswordStyled>
   )

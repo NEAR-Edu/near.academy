@@ -5,7 +5,7 @@ import { User, UserModel } from '../../../shared/user/User'
 import { mockConnect } from '../../../test/mockConnect'
 import * as createCaptchaObject from '../../captcha/helpers/createCaptcha'
 import * as getSignedJwtObject from '../helpers/getSignedJwt'
-import * as sendEmailVerifyEmailObject from '../helpers/sendEmailVerifyEmail'
+// import * as sendEmailVerifyEmailObject from '../helpers/sendEmailVerifyEmail'
 import * as verifyRecaptchaTokenObject from '../helpers/verifyRecaptchaToken'
 import { signUp } from './signUp'
 
@@ -34,7 +34,7 @@ describe('Users', () => {
     jest.spyOn(verifyRecaptchaTokenObject, 'verifyRecaptchaToken').mockImplementation(async () => Promise.resolve())
     jest.spyOn(getSignedJwtObject, 'getSignedJwt').mockImplementation(() => 'testJwt')
     jest.spyOn(createCaptchaObject, 'createCaptcha')
-    jest.spyOn(sendEmailVerifyEmailObject, 'sendEmailVerifyEmail').mockImplementation(async () => Promise.resolve())
+    // jest.spyOn(sendEmailVerifyEmailObject, 'sendEmailVerifyEmail').mockImplementation(async () => Promise.resolve())
 
     const ctx1 = clone(ctx)
     await signUp(ctx1, next)
@@ -43,7 +43,7 @@ describe('Users', () => {
     expect(verifyRecaptchaTokenObject.verifyRecaptchaToken).toHaveBeenCalled()
     expect(getSignedJwtObject.getSignedJwt).toHaveBeenCalled()
     expect(createCaptchaObject.createCaptcha).toHaveBeenCalled()
-    expect(sendEmailVerifyEmailObject.sendEmailVerifyEmail).toHaveBeenCalled()
+    // expect(sendEmailVerifyEmailObject.sendEmailVerifyEmail).toHaveBeenCalled()
 
     const user: User | null = await UserModel.findOne({ username: ctx1.request.body.username }).lean()
 

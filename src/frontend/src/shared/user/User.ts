@@ -14,6 +14,11 @@ export class User {
   username!: string
 
   @Property()
+  @Length(3, 40)
+  @Matches(/^[a-zA-Z0-9_]*.(testnet|near)$/, { message: 'Account name can only contain letters, numbers and underscores and needs to end with .testnet' })
+  accountName?: string
+
+  @Property()
   @Length(2, 40)
   name!: string
 
@@ -32,11 +37,20 @@ export class User {
   @Property({ nullable: true, optional: true })
   progress?: string[]
 
+  @Property({ nullable: true, optional: true })
+  @IsOptional()
+  // provide a match decorator
+  referral?: string[]
+
   @IsDate()
   createdAt!: Date
 
   @IsDate()
   updatedAt!: Date
+
+  @IsDate()
+  certifiedAt?: Date
+
 }
 
 export const UserModel = getModel(User, { schemaOptions: { timestamps: true } })

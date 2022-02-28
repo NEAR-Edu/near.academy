@@ -9,7 +9,7 @@ export const AboutView = () => {
     <AboutStyled>
       <AboutPage>
         <AboutContainer>
-          <h1>Near Academy</h1>
+          <h1>NEAR Academy</h1>
           <p>Lorem Ipsum</p>
         </AboutContainer>
       </AboutPage>

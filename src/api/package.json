@@ -6,7 +6,7 @@
     "start": "PORT=8080 NODE_ENV=development nodemon --watch src -e ts,tsx --exec ts-node src/index.ts",
     "build": "PORT=3000 NODE_ENV=production tsc",
     "docker-create": "doctl k8s cluster create --region fra1 --node-pool \"name=nearacademy-api;size=s-1vcpu-2gb;count=1;auto-scale=true;min-nodes=1;max-nodes=3\" nearacademy-api --wait && doctl kubernetes cluster kubeconfig save nearacademy-api",
-    "docker-build": "docker build -t labs101/nearacademy-api . --no-cache",
+    "docker-build": "docker build -t labs101/nearacademy-api . --no-cache --platform linux/amd64",
     "docker-run": "docker run --rm -it -p 3000:3000 labs101/nearacademy-api",
     "docker-push": "doctl registry login && docker tag labs101/nearacademy-api registry.digitalocean.com/labs101/nearacademy-api && docker push registry.digitalocean.com/labs101/nearacademy-api",
     "docker-patch": "doctl registry kubernetes-manifest | kubectl --context do-fra1-nearacademy-api apply -f - && kubectl --context do-fra1-nearacademy-api patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-labs101\"}]}'",
@@ -37,6 +37,7 @@
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^5.2.0",
     "mongoose": "^5.9.18",
+    "near-api-js": "^0.44.2",
     "rate-limiter-flexible": "^2.1.6",
     "reflect-metadata": "^0.1.13",
     "speakingurl": "^14.0.1",
@@ -67,6 +68,9 @@
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
+  },
+  "engines": {
+      "node": "^16.14.0"
   },
   "jest": {
     "testEnvironment": "node"

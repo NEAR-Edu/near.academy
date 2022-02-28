@@ -1,3 +1,5 @@
+import { Header } from 'app/App.components/Header/Header.controller'
+import { MainFooter } from 'app/App.components/MainFooter/MainFooter.controller'
 import * as React from 'react'
 
 //prettier-ignore
@@ -6,9 +8,10 @@ import { TermsContainer, TermsPage, TermsStyled } from './Terms.style'
 export const TermsView = () => {
   return (
     <TermsStyled>
+      <Header />
       <TermsPage>
         <TermsContainer>
-          <h1>Near Academy Privacy Policy</h1>
+          <h1>NEAR Academy Privacy Policy</h1>
           <p>
             This privacy policy will explain how our organization uses the personal data we collect from you when you
             use our website.
@@ -39,7 +42,11 @@ export const TermsView = () => {
           </ul>
           <p>near.academy may also receive your data indirectly from the following sources:</p>
           <ul>
+            <li>Hotjar</li>
+            <li>Twitter Analytics</li>
             <li>Google Analytics</li>
+            <li>Mailchimp</li>
+            <li>LogRocket</li>
           </ul>
           <h2>How will we use your data?</h2>
           <p>near.academy collects your data so that we can:</p>
@@ -48,7 +55,7 @@ export const TermsView = () => {
             <li>Email you with information and news about near.academy or about Near Protocol.</li>
             <li>Email you to invite you to join the Near Protocol community</li>
           </ul>
-          <p>near.academy does not share or sell your data with any other third party.</p>
+          <p>near.academy does not share or sell your data with any other third party except the NEAR Foundation.</p>
           <h2>How do we store your data?</h2>
           <p>
             near.academy securely stores your data in a server located in Frankfurt, Germany. The strictest security
@@ -60,7 +67,7 @@ export const TermsView = () => {
           </p>
           <h2>Marketing</h2>
           <p>
-            near.academy may send you information related to Near Academy, Near Protocol or Near Protocol community.{' '}
+            near.academy may send you information related to NEAR Academy, Near Protocol or Near Protocol community.{' '}
           </p>
           <p>
             You have the right at any time to stop near.academy from contacting you for any purposes. To do so, please
@@ -98,7 +105,7 @@ export const TermsView = () => {
           </p>
           <p>
             If you make a request, we have one month to respond to you. If you would like to exercise any of these
-            rights, please contact us at our email: nearacademy@protonmail.com{' '}
+            rights, please contact us at our email: learn@near.org{' '}
           </p>
           <h2>Cookies</h2>
           <p>
@@ -142,13 +149,13 @@ export const TermsView = () => {
           <h2>Changes to our privacy policy</h2>
           <p>
             near.academy keeps its privacy policy under regular review and places any updates on this web page. This
-            privacy policy was last updated on 13 October 2020.
+            privacy policy was last updated on 16 November 2021.
           </p>
           <h2>How to contact us</h2>
           <p>
             If you have any questions about near.academy privacy policy, the data we hold on you, or you would like to
             exercise one of your data protection rights, please email us at:{' '}
-            <a href="mailto:nearacademy@protonmail.com">nearacademy@protonmail.com</a>
+            <a href="mailto:learn@near.org">learn@near.org</a>
           </p>
           <h2>How to contact the appropriate authority</h2>
           <p>
@@ -157,6 +164,7 @@ export const TermsView = () => {
           </p>
         </TermsContainer>
       </TermsPage>
+      <MainFooter />
     </TermsStyled>
   )
 }

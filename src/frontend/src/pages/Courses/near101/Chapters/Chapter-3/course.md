@@ -2,17 +2,6 @@
 
 <Difficulty>Difficulty: 2/5 | Estimated reading time: 8 min</Difficulty>
 
-<narrativeText style="background: #00C08B">
-    <div>
-        <img alt="story_image_3_0" src="/images/chap_3_0.png">
-    </div>
-    <VerticalAlign>
-        Lucky you! Your application was accepted. You’ve landed in Rio de Janeiro and head towards the beach where the museum is located.
-        This is your first working day in the Meme Museum. You meet the director of the museum who gets you setup.
-        <Spacer />
-        "Today we're going to bring you up to speed with the latest stack from NEAR, and get you your work account which you will use for everything from now on."
-    </VerticalAlign>
-</narrativeText>
 <Spacer />
 
 **NEAR is an open-source platform that accelerates the development of decentralized applications.**
@@ -72,22 +61,9 @@ With NEAR, developers should not have to choose between different blockchains li
 
 <Spacer />
 
-<narrativeText style="background: #0072CE">
-    <div>
-        <img alt="story_image_3_3" src="/images/chap_3_3.png">
-    </div>
-    <VerticalAlign>
-        “Hey there, I’m Ethan, welcome to the team!”
-        “Nice to meet you! I checked your personal account, you’re a rockstar !”
-        <Spacer />
-        “Let me show you how to set up a Testnet Account”
-    </VerticalAlign>
-</narrativeText>
-
 ## NEAR Account Overview and Set Up
 
-NEAR uses readable account IDs similar to Twitter handles. In addition, account IDs work like website domains; they can have sub-domains.
-For example, only the account "alice" can create a sub-account like "work.alice", and now just "work.alice" can create a "http://dayjob.work.alice".
+NEAR uses readable account IDs similar to Twitter handles. In addition, account IDs work like website domains; they can have sub-domains. For example, only the account "alice" can create a sub-account like "work.alice", and now just "work.alice" can create "dayjob.work.alice".
 Each of these subaccounts has its public key, so one account can have multiple public keys representing various profiles.
 
 These public keys, also called access keys grant permission to act on behalf of the account. There are 2 types of permissions: full-permission and function-call limited permission.
@@ -100,13 +76,13 @@ Imagine a NEAR-based platform that registers new user roles that can perform act
 
 1\. Visit <a target="_blank" rel="noreferrer" href="https://wallet.testnet.near.org/">https:\/\/wallet.testnet.near.org/</a>
 <ImageContainer>
-    <img style="max-width: 550px" alt="story_image_3_4" src="/images/chap_3_4.png">
+<img class="chapterImage" alt="story_image_3_4" src="/images/chap_3_4.png">
 </ImageContainer>
 
 2\. Choose your personal nickname (i.e. Account ID). The cool thing about NEAR is that it offers the option to personalize your wallet. If the nickname is available, you are ready to join the protocol!
 
 <ImageContainer>
-    <img style="max-width: 550px" alt="story_image_3_5" src="/images/chap_3_5.png">
+    <img class="chapterImage" alt="story_image_3_5" src="/images/chap_3_5.png">
 </ImageContainer>
 
 3\. Now it is the time to choose the security method to secure and recover your account.
@@ -114,3 +90,21 @@ Imagine a NEAR-based platform that registers new user roles that can perform act
 5\. You are now part of the NEAR test network.
 
 From now, you have the possibility to interact with the NEAR testnet and do your first transaction. Your test account comes with 200 NEAR, which come quite handy to experiment.
+
+<Spacer />
+
+<BackgroundContainer>
+
+<div class="exerciseTitle">Exercise</div>
+
+Create your NEAR testnet account and report it back for validation.
+
+</BackgroundContainer>
+
+<Spacer />
+
+<SubTitleMobile>Time to practice:</SubTitleMobile>
+
+<!-- <FormWrapper>
+    <Button text="Submit" color="primary" invertIcon />
+</FormWrapper> -->

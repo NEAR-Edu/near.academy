@@ -17,13 +17,18 @@ export class SignUpInputs {
 
   @Expose()
   @Length(8, 50)
-  @Matches(/^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/, { message: 'Password must have at least one letter and one digit' })
+  @Matches(/^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/, { message: 'Password must be longer than or equal to 8 characters' })
   password!: string
 
   @Expose()
   @Length(8, 50)
   @IsEqualTo('password')
   confirmPassword!: string
+
+  @Expose()
+  @Length(0, 20)
+  @Matches(/^[a-zA-Z0-9_]*$/, { message: 'Referral can only contain letters, numbers and underscores' })
+  referral?: string
 
   @Expose()
   @Length(100, 1000)

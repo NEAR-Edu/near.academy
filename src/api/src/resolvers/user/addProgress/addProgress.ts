@@ -28,10 +28,19 @@ export const addProgress = async (ctx: Context, next: Next): Promise<void> => {
 
   const updatedUser: User = await UserModel.findOne(
     { _id: user._id },
-  ).lean()  as User
+  ).lean() as User
 
   const publicUser: PublicUser = toPublicUser(updatedUser)
-  
+
+  // set referral to completed 
+  if (publicUser.progress && publicUser.progress.length >= 8) {
+    // update referral status
+    await UserModel.updateOne(
+      { "referral": { $elemMatch: { username: publicUser.username, status: 'PENDING' } } },
+      { $set: { "referral.$.status": 'COMPLETED' } }) // TODO: use const enum here
+      .exec();
+  }
+
   const response: AddProgressOutputs = { user: publicUser }
 
   ctx.status = 200
