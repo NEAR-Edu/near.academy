@@ -5,18 +5,6 @@
     "start": "PORT=3000 NODE_ENV=development REACT_APP_BACKEND_URL=http://localhost:8080 react-scripts -r @cypress/instrument-cra start && \"open http://localhost:3000/\"",
     "start-windows": "set PORT=3000 && set NODE_ENV=development && set REACT_APP_BACKEND_URL=http://localhost:8080 && react-scripts -r @cypress/instrument-cra start && \"open http://localhost:3000/\"",
     "build": "react-scripts build",
-    "docker-create": "doctl k8s cluster create --region fra1 --node-pool \"name=nearacademy-frontend;size=s-1vcpu-2gb;count=1;auto-scale=true;min-nodes=1;max-nodes=3\" nearacademy-frontend --wait && doctl kubernetes cluster kubeconfig save nearacademy-frontend",
-    "docker-build": "yarn build && docker build -t labs101/nearacademy-frontend . --no-cache --platform linux/amd64",
-    "docker-run": "docker run --rm -it -p 80:80 labs101/nearacademy-frontend",
-    "docker-push": "doctl registry login && docker tag labs101/nearacademy-frontend registry.digitalocean.com/labs101/nearacademy-frontend && docker push registry.digitalocean.com/labs101/nearacademy-frontend",
-    "docker-patch": "doctl registry kubernetes-manifest | kubectl --context do-fra1-nearacademy-frontend apply -f - && kubectl --context do-fra1-nearacademy-frontend patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-labs101\"}]}'",
-    "docker-secrets": "kubectl --context do-fra1-nearacademy-frontend create secret generic person --from-env-file=.env",
-    "docker-deploy": "kubectl --context do-fra1-nearacademy-frontend apply -f kubernetesDeployment.json",
-    "docker-serve": "kubectl --context do-fra1-nearacademy-frontend apply -f kubernetesService.json",
-    "docker-restart": "kubectl --context do-fra1-nearacademy-frontend delete pods -l app=nearacademy-frontend",
-    "docker-logs": "kubectl --context do-fra1-nearacademy-frontend logs --timestamps -l app=nearacademy-frontend",
-    "docker-update": "yarn run docker-build && yarn run docker-push && yarn run docker-restart",
-    "docker-install": "yarn run docker-build && yarn run docker-push && yarn run docker-patch && yarn run docker-deploy && yarn run docker-serve",
     "test": "react-scripts test",
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'",
     "cypress:open": "cypress open",
@@ -107,7 +95,7 @@
     "extends": "react-app"
   },
   "engines": {
-      "node": "^16.14.0"
+    "node": "^16.14.0"
   },
   "browserslist": {
     "production": [
