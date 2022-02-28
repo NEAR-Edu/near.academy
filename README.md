@@ -41,3 +41,4 @@ yarn start
 ## See also
 
 - https://github.com/NEAR-Edu/near-academy-contracts
+- To use `react-google-recaptcha-v3`, you need to generate keys at https://www.google.com/recaptcha/intro/v3.html.
