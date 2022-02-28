@@ -1,5 +1,5 @@
-import styled from "styled-components/macro";
-import { backgroundColorChapter } from "styles";
+import styled from 'styled-components/macro'
+import { backgroundColorChapter } from 'styles'
 
 export const Wrapp = styled.div`
   display: grid;
@@ -14,7 +14,7 @@ export const ImgContainer = styled.div`
   max-width: 100%;
   height: 100%;
   position: relative;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -35,12 +35,12 @@ export const CloseBtn = styled.div`
   right: 40px;
   width: 24px;
   height: 24px;
-  background-image: url('/images/splash/closeBtn.png');
+  background-image: url('/images/splash/close.svg');
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
   z-index: 99;
-  
+
   @media (max-width: 1200px) {
     display: none;
   }
