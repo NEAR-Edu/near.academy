@@ -11,7 +11,7 @@ git clone https://github.com/oceanByte/near-academy-museum-frontend
 
 You see there is a src folder that contains the files to interact with NEAR and to display the results. It looks just like an ordinary web app. We are using the near-api-js library here which provides an easy way to interact with NEAR. Like with every other library, many details will become more clear when you really need them, so let’s focus on what’s needed now: **We want to display a list of all available memes and interact with them by writing a comment.**
 
-As we know there is the museum contract with a function get_meme_list. We called it via the NEAR CLI before and we can do the same now with the near-api-js. You see that it does not matter how you connect to NEAR as long as it follows a specific protocol. The setup to get connected to NEAR is just a few lines.
+As we know there is the museum contract with a function get\_meme\_list. We called it via the NEAR CLI before and we can do the same now with the near-api-js. You see that it does not matter how you connect to NEAR as long as it follows a specific protocol. The setup to get connected to NEAR is just a few lines.
 
 <ImageContainer>
     <img alt="story_image_7_1" src="/images/chap_7_1.png">
@@ -21,7 +21,7 @@ As we know there is the museum contract with a function get_meme_list. We called
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 import getConfig from './config'
 
-const nearConfig = getConfig(process.env.NODE_ENV || 'development')
+const nearConfig = getConfig(process.env.NODE\_ENV || 'development')
 
 // Initialize contract & set global variables
 export async function initContract() {
@@ -41,9 +41,9 @@ window.accountId = window.walletConnection.getAccountId()
 // Initializing our contract APIs by contract name and configuration
 window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
 // View methods are read only. They don't modify the state, but usually return some value.
-viewMethods: ['get_meme_list'],
+viewMethods: ['get\_meme\_list'],
 // Change (“call”) methods can modify the state. But you don't receive the returned value when called.
-changeMethods: ['create_meme'],
+changeMethods: ['create\_meme'],
 })
 }
 </Highlight>
@@ -57,9 +57,9 @@ Looking at index.js, we see that we can achieve our goal with four short functio
 We just use the name that was defined for the function in the contract to call it.
 
 <Highlight class="language-javascript">
-let memeLIst = []
+let memeList = []
 async function getMemeList() {
-  memeList = await window.contract.get_meme_list()
+  memeList = await window.contract.get\_meme\_list()
   // ... DOM manipulation here
 }
 </Highlight>
@@ -74,8 +74,8 @@ async function setupMemeContracts() {
    memeList.forEach(meme => {
 memeContracts.push(await new Contract(window.walletConnection.account(),
 meme + “.” + nearConfig.contractName,
-{ viewMethods: ['get_meme', ‘get_recent_comments’],
-  changeMethods: [‘set_comment’]}))
+{ viewMethods: ['get\_meme', ‘get\_recent\_comments’],
+  changeMethods: [‘set\_comment’]}))
    })
 
 await Promise.all(memeContracts)
@@ -84,13 +84,13 @@ console.log(memeContracts)
 }
 </Highlight>
 **3. Display all memes**
-Here we go. We have all the contracts ready and call the get_meme function for each of them to display the results.
+Here we go. We have all the contracts ready and call the get\_meme function for each of them to display the results.
 
 <Highlight class="language-javascript">
 const memes = []
 async function showMemes() {
   memeContracts.forEach(async (memeContract) => {
-    memes.push(memeContract.get_meme())
+    memes.push(memeContract.get\_meme())
   })
   await Promise.all(memes)
   console.log(memes)
@@ -99,11 +99,11 @@ async function showMemes() {
 </Highlight>
 **4. Write a comment**
 
-Adding a comment to a Meme is just as easy as calling the function set_comment and providing your text.
+Adding a comment to a Meme is just as easy as calling the function set\_comment and providing your text.
 
 <Highlight class="language-javascript">
 async function setComment(memeIndex, text) {
-  const result = await memes[memeIndex].set_comment(text)
+  const result = await memes[memeIndex].set\_comment(text)
   console.log(result)
   // ... DOM manipulation here
 }
