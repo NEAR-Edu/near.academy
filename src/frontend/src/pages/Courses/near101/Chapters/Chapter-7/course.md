@@ -57,7 +57,7 @@ Looking at index.js, we see that we can achieve our goal with four short functio
 We just use the name that was defined for the function in the contract to call it.
 
 <Highlight class="language-javascript">
-let memeLIst = []
+let memeList = []
 async function getMemeList() {
   memeList = await window.contract.get\_meme\_list()
   // ... DOM manipulation here
