@@ -21,22 +21,22 @@ The contract can be called using the NEAR CLI: <AnimatedCode>near view hello-wor
 ## Functions
 
 The hello-world contract is the most basic type of contract as no state alteration is required by the NEAR Network when the contract is called. It simply displays a static string stored on the blockchain. Calling such contracts does not involve gas cost in NEAR; gas is incurred only when a computation is required.
-Let’s look at hello_you() now. This contract invokes more than just a simple “view” function on something that was stored on the blockchain. It requires a call of context.
+Let’s look at hello\_you() now. This contract invokes more than just a simple “view” function on something that was stored on the blockchain. It requires a call of context.
 
 <Highlight class="language-typescript">
-export function hello_you(): string {
+export function hello\_you(): string {
   return 'Hello, ' + context.sender + '!'
 }
 </Highlight>
 
-Contract hello_you() does not alter the blockchain state. Still, it requires a call of context, an operation that validator nodes have to carry, and therefore gas to be paid.
+Contract hello\_you() does not alter the blockchain state. Still, it requires a call of context, an operation that validator nodes have to carry, and therefore gas to be paid.
 
 Other "call" functions may alter the state of the blockchain. Gas must be paid to the network when invoking these functions.
 
-Consider the function register_me(). It takes a name and stores it on the blockchain, altering its state, and requiring an action.
+Consider the function register\_me(). It takes a name and stores it on the blockchain, altering its state, and requiring an action.
 
 <Highlight class="language-typescript">
-export function register_me(): void {
+export function register\_me(): void {
   logging.log('saveMyName() was called')
   storage.setString('sender', context.sender)
 }

@@ -90,7 +90,8 @@ export const Chapter = () => {
           })
       })
     })
-  }, [pathname, dispatch, user])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
 
 
   chapterData.forEach((chapter, i) => {
