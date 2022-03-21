@@ -1,5 +1,7 @@
 # near.academy
 
+These instructions are for people on the NEAR Foundation Education team (and aren't necessarily relevant for the general public).
+
 ## How to get started
 
 ```bash
@@ -37,6 +39,30 @@ mongorestore --nsInclude "*.*"
 # 8. Start development
 yarn start
 ```
+
+## Deployments
+
+https://dashboard.render.com/ hosts 2 projects, both of which are connected to and depend on this repo.
+
+Pushing commits to `main` will automatically redeploy both the API and frontend projects.
+
+### Frontend 
+
+- "static site" on Render
+- Build Command: `cd src/frontend && yarn && yarn build`
+- Publish directory: `src/frontend/build`
+- Branch: main
+- Environment > Environment Variables: manually added one at a time, no Secret Files
+
+### API
+
+- "web service" on Render
+- Environment > Secret Files > Filename > `.env`: [paste the .env contents]
+- Dockerfile Path: `/src/api/Dockerfile`
+- Docker Build Context Directory: `/src/api/`
+- Docker Command: (blank)
+- Health Check Path: (blank)
+- Branch: main
 
 ## See also
 
