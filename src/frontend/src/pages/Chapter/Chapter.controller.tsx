@@ -58,6 +58,7 @@ export const Chapter = () => {
   })
   const dispatch = useDispatch()
   const user = useSelector((state: State) => state.auth.user)
+  const [isUserFetched, setIsUserFetched] = useState(false)
   let previousChapter = '/'
   let nextChapter = '/'
   let percent = 0
@@ -69,10 +70,14 @@ export const Chapter = () => {
   })
   if (counter >= 20) badgeUnlocked = true
 
+  useEffect(() => {
+    if (user && !isUserFetched) {
+      dispatch(getUser({ username: user.username }))
+      setIsUserFetched(true)
+    }
+  }, [dispatch, user, isUserFetched])
 
   useEffect(() => {
-    if (user) dispatch(getUser({ username: user.username }))
-
     courseData.forEach((course: CourseData) => {
       const index = course.path!
 
@@ -90,8 +95,7 @@ export const Chapter = () => {
           })
       })
     })
-  }, [pathname, dispatch, user])
-
+  }, [pathname])
 
   chapterData.forEach((chapter, i) => {
     if (pathname === chapter.pathname) {
@@ -139,11 +143,11 @@ export const Chapter = () => {
         /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
       } else {
         if (showDiff) {
-          const [propsQuestions] = data.questions;
+          const [propsQuestions] = data.questions
 
           setData({
             ...data,
-            questions: [{...propsQuestions, proposedResponses: []}],
+            questions: [{ ...propsQuestions, proposedResponses: [] }],
           })
           setShowDiff(false)
           setValidatorState(PENDING)
