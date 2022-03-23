@@ -91,7 +91,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
       <Editor
         height={height ? height : '600px'}
         width={width}
-        value={proposedSolution}
+        defaultValue={proposedSolution}
         language="rust"
         theme="vs-dark"
         onChange={(value: string | undefined, ev: any) => proposedSolutionCallback(value)}
