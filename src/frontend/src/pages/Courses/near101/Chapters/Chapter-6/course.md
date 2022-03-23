@@ -91,19 +91,19 @@ We can classify these functions into two different kinds of functions: view func
 View functions do NOT alter contract state. As we’ve seen before the execution of these functions do not cost any gas. They just read a value from a variable and return it. In this example the vote\_score is returned, which represents the total vote score for this specific meme:
 
 <Highlight class="language-typescript">
-export function get_vote_score(): i32 {
-  assert_contract_is_initialized()
-  return Meme.get().vote_score
+export function get\_vote\_score(): i32 {
+  assert\_contract\_is\_initialized()
+  return Meme.get().vote\_score
 }
 </Highlight>
 Call functions are the ones that alter a contract state. This means that something is saved on the blockchain. These operations have a gas cost attached to them that is proportional to the complexity of the computation. Remember validators are working for you behind the scene, and they must be rewarded for their validation work.
 
 <Highlight class="language-typescript">
-export function add_comment(text: string): void {
-  assert_contract_is_initialized()
+export function add\_comment(text: string): void {
+  assert\_contract\_is\_initialized()
   assert(context.sender == context.predecessor, 'Users must comment directly')
-  assert_reasonable_comment_length(text)
-  Meme.add_comment(text)
+  assert\_reasonable\_comment\_length(text)
+  Meme.add\_comment(text)
 }
 </Highlight>
 This function add\_comment takes a string and saves it in the contract. When done, it does not return anything. First, it makes sure the contract is actually initialized to provide necessary fields and functions. It also enforces the user to use their account to write a comment, so you can not call another contract to write a comment.
