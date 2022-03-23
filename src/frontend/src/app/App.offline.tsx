@@ -11,7 +11,10 @@ const discard = (error: any, _action: any, _retries: any) => {
   const { request, response } = error
   let message = 'Error, please contact support'
   if (response && response.error && typeof response.error === 'string') message = response.error
-  else if (response && typeof response === 'string') message = response
+  else if (response && typeof response === 'string')
+    message = response.includes('Token already exists')
+      ? 'It appears that a certificate has already been issued for this account'
+      : response
 
   if (response) store.dispatch<any>(showToaster(ERROR, message, 'Contact support if needed'))
   if (!request) throw error
