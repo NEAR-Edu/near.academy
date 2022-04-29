@@ -1,5 +1,3 @@
-// Congratulations. You've reached the end of this NEAR Academy course, so you can now claim your own unique NEAR Academy certificate!
+// 👈 First, enroll in NEAR Certified Developer (which will be the next certificate that you'll want to earn).
 
-// Just follow the steps on the next page.
-
-// Then remember to take the next level course (called [NEAR Certified Developer](https://www.near.university/courses/near-certified-developer?utm_source=NA&utm_id=NA)) to earn that certificate too!
+// Then, click "Submit answer" below 👇 to finish NEAR Academy and claim your NEAR Academy certificate.
