@@ -1,47 +1,25 @@
-# What Next
-
-<Difficulty> Difficulty: 1/5 | Estimated reading time: 4 min </Difficulty>
+# Certificates!
 
 <Spacer />
 
-You’ve now been exposed to how dApps are built with NEAR. It’s not that much, but it’s already sufficient for you to create your first dApps!
+Congratulations. You've reached the end of this NEAR Academy course, so you can now claim your own unique NEAR Academy certificate!
 
-The network is production-ready, enabling the development of high-quality dApps and services in record time.
-
-**And the NEAR community is here to help.** It is a vibrant community, including hundreds of experienced blockchain engineers working on usability improvements every day. The NEAR Collective, in particular, provides education and outreach efforts to show that this technology is not as complex as many think.
-
-**As more developers consider joining NEAR, why shouldn’t you?**
-
-Here are a few ways to get involved, regardless of your skills or the time you have at hand. It’s worth it!
+## Ready for the next level?
 
 <Spacer />
 
-- <a target="_blank" rel="noreferrer" href="https://near.org/contributor/">Become a Contributor</a>. Contribute to NEAR technical content and libraries. The benefits are several such as having a global impact into Web3 development and monetary reward from NEAR Foundation.
-- <a target="_blank" rel="noreferrer" href="https://near.org/guilds/">Join a Guild</a>. Building a community and earn engagement-based rewards for it. NEAR Guilds are a new way for a decentralized community to organize in an agile way. Participate in Events.
-- <a target="_blank" rel="noreferrer" href="https://near.org/events/">Participate in events across the globe and online</a>.
-- <a target="_blank" rel="noreferrer" href="https://near.org/community/#stayintouch">Stay in Touch with NEAR</a>. Get connected to where conversations are happening.
-- <a target="_blank" rel="noreferrer" href="https://near.org/developers/">Build on NEAR</a>. Do you have any business ideas related to Web3 application? Start to build it on NEAR protocols.
+Speaking of certificates, the next level for you to earn (now that you've completed NEAR Academy) is called NEAR Certified Developer.
 
 <Spacer />
 
-**Do you have a good idea? The NEAR Grants Program is generous and will help you** take your project to the next level. Grants support projects that share NEAR’s mission to accelerate the transition to open technologies by growing and enabling a community of developers and creators.
-
-Grants are available for a multitude of contributions, like extending the NEAR infrastructure, developer tooling and documentation, validator and staking resources, open source libraries, public goods projects, research & development, decentralized applications with open source components, educational materials for developers, social impact, and interoperability solutions.
-
-Previous grants have already seen amazing innovation comes to light:
-<Spacer />
-
-- <a target="_blank" rel="noreferrer" href="https://liquality.io/">Liquality</a> (cross-chain atomic swaps) 
-- <a target="_blank" rel="noreferrer" href="https://walletconnect.org/">WalletConnect</a> (wallet interoperability) 
-- <a target="_blank" rel="noreferrer" href="http://abridged.io/">Abridged/Collab.Land</a> (token-permissioned communities) 
-- <a target="_blank" rel="noreferrer" href="https://narwallets.com/">Narwallets</a> (browser wallet) 
-- <a target="_blank" rel="noreferrer" href="https://www.near-staking.com/">NEAR-Staking.com</a> (validator resources) 
+Join the **<a target="_blank" rel="noreferrer" href="https://www.near.university/courses/near-certified-developer?utm_source=NA&utm_medium=banner&utm_campaign=NANCD&utm_id=NA">NEAR Certified Developer</a>** course and get certified to start your web3 career within a week.
 
 <Spacer />
-If you liked the meme museum theme, you might like some real projects happening in that space, the main ones at time of writing are:
-<Spacer />
 
-- <a target="_blank" rel="noreferrer" href="https://paras.id/">Paras</a>. All-in-one social Digital Art Cards (DAC) marketplace for creators and collectors. 
-- <a target="_blank" rel="noreferrer" href="https://mintbase.io/">Mintbase</a>. Global platform that allows anyone, including those with less technical backgrounds, to create their own digital assets verified on multiple blockchains. Mintbase provides creators (minters) with various creative allocation and redemption mechanisms for their customers.
+Upon successful completion, your certificate will give you an edge when applying for jobs, grants, or fellowships.
 
 <Spacer />
+
+<a target="_blank" rel="noreferrer" href="https://www.near.university/courses/near-certified-developer?utm_source=NA&utm_medium=banner&utm_campaign=NANCD&utm_id=NA">
+<img alt="Enroll Now in NEAR Certified Developer" src="/images/NCD_enroll_now.png"/>
+</a>
