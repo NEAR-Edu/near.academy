@@ -26,6 +26,7 @@ export const restore = () => (dispatch: any) => {
 
 export const RECAPTCHA_REQUEST = 'RECAPTCHA_REQUEST'
 export const recaptchaRequest = () => (dispatch: any) => {
+  console.log('recaptchaRequest')
   dispatch({
     type: RECAPTCHA_REQUEST,
   })

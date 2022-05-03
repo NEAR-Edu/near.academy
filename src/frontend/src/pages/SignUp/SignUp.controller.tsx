@@ -23,6 +23,7 @@ export const SignUp = () => {
       return
     }
     const recaptchaToken = await executeRecaptcha('signup')
+    console.log("finished executeRecaptcha('signup')")
 
     dispatch(signUp({ ...signUpInputs, recaptchaToken }))
   }

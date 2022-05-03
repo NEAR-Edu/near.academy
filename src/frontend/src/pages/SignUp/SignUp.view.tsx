@@ -3,8 +3,8 @@ import * as React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Formik } from 'formik'
+import * as Yup from 'yup'
 
 import { Button } from 'app/App.components/Button/Button.controller'
 import { InputField } from 'app/App.components/Form/InputField/Input.controller'
@@ -17,9 +17,7 @@ export const ValidationSchema = Yup.object().shape({
     .min(2, 'Username must be longer than or equal to 2 characters')
     .max(50, 'Username must be shorter than or equal to 50 characters')
     .required('This field is required!'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('This field is required!'),
+  email: Yup.string().email('Invalid email').required('This field is required!'),
   password: Yup.string()
     .matches(/^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/, 'Password must be longer than or equal to 8 characters')
     .min(8, 'Password must be longer than or equal to 8 characters')
@@ -31,15 +29,15 @@ export const ValidationSchema = Yup.object().shape({
   referral: Yup.string()
     .matches(/^[a-zA-Z0-9_]*$/, 'Referral can only contain letters, numbers and underscores')
     .min(0, 'Referral must be longer than or equal to 0 characters')
-    .max(20, 'Referral must be shorter than or equal to 20 characters')
-});
+    .max(20, 'Referral must be shorter than or equal to 20 characters'),
+})
 
 interface IFormInputs {
-  username: string,
-  email: string,
-  password: string,
-  confirmPassword: string,
-  referral: string,
+  username: string
+  email: string
+  password: string
+  confirmPassword: string
+  referral: string
 }
 
 type SignUpViewProps = {
@@ -48,17 +46,16 @@ type SignUpViewProps = {
 }
 
 export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
-
   const handleSubmit = (values: IFormInputs) => {
-    console.log(values)
+    console.log('SignUp.view handleSubmit', values.username, values.email)
     signUpCallback(values)
   }
 
   const getReferralValue = (value: string): string => {
-    const indexQuestionMark = value.indexOf('?');
+    const indexQuestionMark = value.indexOf('?')
     if (indexQuestionMark) {
-      const urlParams = new URLSearchParams(value.slice(indexQuestionMark));
-      const referralValue = urlParams.get('referral');
+      const urlParams = new URLSearchParams(value.slice(indexQuestionMark))
+      const referralValue = urlParams.get('referral')
 
       return referralValue || ''
     }
@@ -73,13 +70,13 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
       password: '',
       confirmPassword: '',
       referral: '',
-    };
+    }
 
-    const url = window.location.href;
+    const url = window.location.href
 
     initialValues.referral = getReferralValue(url)
 
-    return initialValues;
+    return initialValues
   }
 
   return (
@@ -88,21 +85,8 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
         <h1>Sign Up</h1>
       </SignUpTitle>
       <SignUpCard>
-        <Formik
-          initialValues={getInitialValues()}
-          validationSchema={ValidationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            setFieldValue,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+        <Formik initialValues={getInitialValues()} validationSchema={ValidationSchema} onSubmit={handleSubmit}>
+          {({ values, errors, touched, setFieldValue, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
               <Row>
                 <InputField
@@ -114,9 +98,11 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
                   name="username"
                   inputStatus={
                     errors.username && touched.username
-                      ? 'error' : !errors.username && touched.username 
-                      ? 'success' : undefined
-                    }
+                      ? 'error'
+                      : !errors.username && touched.username
+                      ? 'success'
+                      : undefined
+                  }
                   errorMessage={errors.username && touched.username && errors.username}
                   isDisabled={false}
                 />
@@ -130,10 +116,8 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
                   onBlur={handleBlur}
                   name="email"
                   inputStatus={
-                    errors.email && touched.email
-                      ? 'error' : !errors.email && touched.email 
-                      ? 'success' : undefined
-                    }
+                    errors.email && touched.email ? 'error' : !errors.email && touched.email ? 'success' : undefined
+                  }
                   errorMessage={errors.email && touched.email && errors.email}
                   isDisabled={false}
                 />
@@ -148,9 +132,11 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
                   name="password"
                   inputStatus={
                     errors.password && touched.password
-                      ? 'error' : !errors.password && touched.password 
-                      ? 'success' : undefined
-                    }
+                      ? 'error'
+                      : !errors.password && touched.password
+                      ? 'success'
+                      : undefined
+                  }
                   errorMessage={errors.password && touched.password && errors.password}
                   isDisabled={false}
                 />
@@ -165,9 +151,11 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
                   name="confirmPassword"
                   inputStatus={
                     errors.confirmPassword && touched.confirmPassword
-                      ? 'error' : !errors.confirmPassword && touched.confirmPassword 
-                      ? 'success' : undefined
-                    }
+                      ? 'error'
+                      : !errors.confirmPassword && touched.confirmPassword
+                      ? 'success'
+                      : undefined
+                  }
                   errorMessage={errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}
                   isDisabled={false}
                 />
@@ -178,26 +166,28 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
                   type="text"
                   value={values.referral}
                   onChange={(e) => {
-                    let value = e.target.value;
+                    let value = e.target.value
 
-                    const indexQuestionMark = value.indexOf('?');
+                    const indexQuestionMark = value.indexOf('?')
                     if (indexQuestionMark) {
-                      const urlParams = new URLSearchParams(value.slice(indexQuestionMark));
-                      const myParam = urlParams.get('referral');
+                      const urlParams = new URLSearchParams(value.slice(indexQuestionMark))
+                      const myParam = urlParams.get('referral')
                       if (myParam) {
                         value = myParam
                       }
                     }
 
-                    setFieldValue("referral", value);
+                    setFieldValue('referral', value)
                   }}
                   onBlur={handleBlur}
                   name="referral"
                   inputStatus={
                     errors.referral && touched.referral
-                      ? 'error' : !errors.referral && touched.referral 
-                      ? 'success' : undefined
-                    }
+                      ? 'error'
+                      : !errors.referral && touched.referral
+                      ? 'success'
+                      : undefined
+                  }
                   errorMessage={errors.referral && touched.referral && errors.referral}
                   isDisabled={false}
                 />
