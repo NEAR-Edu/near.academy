@@ -85,7 +85,7 @@ All interactions and states are stored immutably on the blockchain and publicly 
 
 <div class="exerciseTitle">Exercise</div>
 
-Here is your easy win to get started: integrate the payment gateway in line 20 of the app code in the exercise code box.
+Here is your easy win to get started: integrate the payment gateway in line 18 of the app code in the exercise code box.
 
 <Spacer />
 
